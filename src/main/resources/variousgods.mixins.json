@@ -1,0 +1,20 @@
+{
+	"required": true,
+	"package": "com.lying.variousgods.mixin",
+	"mixins":
+	[
+		"AccessorBrewingStandBlockEntity",
+		"LivingEntityMixin",
+		"PlayerMixin",
+		"BowItemMixin",
+		"CrossbowItemMixin",
+		"ItemStackMixin",
+		"EnchantedItemTriggerMixin",
+		"BrewingStandBlockEntityMixin",
+		"ApplyBonusCountMixin"
+	],
+	"client":
+	[
+		"PlayerModelMixin"
+	]
+}

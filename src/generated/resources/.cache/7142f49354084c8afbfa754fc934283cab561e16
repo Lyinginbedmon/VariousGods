@@ -1,0 +1,6 @@
+// 1.19	2023-03-29T01:40:44.9741108	Various Gods entity tags
+c9b2c6857ae58403a516390102fd1e9ad6c48b2f data/variousgods/tags/entity_types/animal.json
+35a9119910c3f0635b2d91c73210dbe6843b2b1b data/variousgods/tags/entity_types/boss.json
+df5786ea76a0916c137290a232a4791eaad2b0dd data/variousgods/tags/entity_types/fish.json
+8b108d32b05105673eda74807733bd85c87fbe97 data/variousgods/tags/entity_types/people.json
+ddbc6d07a891f587ae07ccb8631eb77b890fbca1 data/variousgods/tags/entity_types/sea_creature.json

@@ -1,0 +1,17 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.variousgods.urlin_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.variousgods.urlin_name\"}",
+  "Domains": [
+    "#variousgods:animal",
+    "#variousgods:chaos"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:red_mushroom\"}",
+  "Personality": {
+    "Traits": [
+      "variousgods:zoolater",
+      "variousgods:mycologist"
+    ]
+  },
+  "Seed": 2847
+}

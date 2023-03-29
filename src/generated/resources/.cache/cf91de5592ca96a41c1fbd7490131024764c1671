@@ -1,0 +1,8 @@
+// 1.19	2023-03-29T01:40:44.9761031	Various Gods block tags
+cff47eaf1f2e650fa0cc8a4ec292abddd9637872 data/minecraft/tags/blocks/mineable/axe.json
+f9d112e7e762dae25fede0ccc4782853a38b5468 data/minecraft/tags/blocks/mineable/pickaxe.json
+ec38017b383770eaa4fa6b2b77adb1213df45464 data/variousgods/tags/blocks/crop_blocks.json
+edb4532abac0bf9dda5970be1fade973f5fa7eff data/variousgods/tags/blocks/fire.json
+6faea924c4f22ce613985a2d0b0189cad6396602 data/variousgods/tags/blocks/mushroom.json
+859cbc91c2cd8c2f150c6d38b61239f37ec61ee0 data/variousgods/tags/blocks/nature.json
+8450ef329846fd3211776ce4af17d04099659b8d data/variousgods/tags/blocks/ore_blocks.json

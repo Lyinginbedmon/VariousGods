@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "variousgods:block/altar_golden"
+    },
+    "facing=south": {
+      "model": "variousgods:block/altar_golden"
+    },
+    "facing=east": {
+      "model": "variousgods:block/altar_golden",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "variousgods:block/altar_golden",
+      "y": 90
+    }
+  }
+}

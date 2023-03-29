@@ -1,0 +1,19 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.variousgods.erinus_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.variousgods.erinus_name\"}",
+  "Domains": [
+    "#variousgods:animal",
+    "#variousgods:plant"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:moss_block\"}",
+  "Personality": {
+    "Traits": [
+      "variousgods:bright",
+      "variousgods:druid",
+      "variousgods:zoolater",
+      "variousgods:vegetarian"
+    ]
+  },
+  "Seed": 66091
+}

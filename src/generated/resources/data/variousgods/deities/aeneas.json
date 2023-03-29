@@ -1,0 +1,18 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.variousgods.aeneas_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.variousgods.aeneas_name\"}",
+  "Domains": [
+    "#variousgods:travel",
+    "#variousgods:creation",
+    "#variousgods:water"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:oak_boat\"}",
+  "Personality": {
+    "Traits": [
+      "variousgods:wanderer",
+      "variousgods:inventor"
+    ]
+  },
+  "Seed": 5388
+}

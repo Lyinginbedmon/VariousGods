@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "variousgods:block/altar_wooden"
+    },
+    "facing=south": {
+      "model": "variousgods:block/altar_wooden"
+    },
+    "facing=east": {
+      "model": "variousgods:block/altar_wooden",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "variousgods:block/altar_wooden",
+      "y": 90
+    }
+  }
+}

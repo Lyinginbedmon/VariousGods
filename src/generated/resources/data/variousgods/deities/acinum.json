@@ -1,0 +1,17 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.variousgods.acinum_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.variousgods.acinum_name\"}",
+  "Domains": [
+    "#variousgods:water"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:heart_of_the_sea\"}",
+  "Personality": {
+    "Traits": [
+      "variousgods:zoolater",
+      "variousgods:seafarer",
+      "variousgods:pescetarian"
+    ]
+  },
+  "Seed": 46654
+}

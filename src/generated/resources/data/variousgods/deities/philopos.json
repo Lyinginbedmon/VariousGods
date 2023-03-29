@@ -1,0 +1,17 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.variousgods.philopos_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.variousgods.philopos_name\"}",
+  "Domains": [
+    "#variousgods:light",
+    "#variousgods:knowledge"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:ender_eye\"}",
+  "Personality": {
+    "Traits": [
+      "variousgods:wanderer",
+      "variousgods:scholar"
+    ]
+  },
+  "Seed": 85134
+}

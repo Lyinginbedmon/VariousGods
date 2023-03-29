@@ -1,0 +1,65 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"0": "block/amethyst_block",
+		"1": "block/amethyst_cluster",
+		"4": "block/andesite",
+		"particle": "block/amethyst_block"
+	},
+	"elements": [
+		{
+			"name": "base_a",
+			"from": [4, 1, 8],
+			"to": [12, 9, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 1, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "base _b",
+			"from": [4, 1, 8],
+			"to": [12, 9, 8],
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 1, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"from": [4, 0, 4],
+			"to": [12, 1, 12],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 1], "texture": "#4"},
+				"east": {"uv": [0, 0, 6, 1], "texture": "#4"},
+				"south": {"uv": [0, 0, 6, 1], "texture": "#4"},
+				"west": {"uv": [0, 0, 6, 1], "texture": "#4"},
+				"up": {"uv": [1, 1, 7, 7], "texture": "#4"},
+				"down": {"uv": [1, 1, 7, 7], "texture": "#4"}
+			}
+		},
+		{
+			"from": [6, 1, 6],
+			"to": [10, 2, 10],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 1, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 6, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 6, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 6, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 6, 1], "texture": "#0"},
+				"up": {"uv": [0, 1, 6, 7], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "crystal",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"children": [0, 1]
+		},
+		2,
+		3
+	]
+}
