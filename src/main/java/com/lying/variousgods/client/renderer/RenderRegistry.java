@@ -1,9 +1,9 @@
 package com.lying.variousgods.client.renderer;
 
-import com.lying.variousgods.VariousGods;
 import com.lying.variousgods.client.VGModelLayers;
 import com.lying.variousgods.client.model.ModelHearthLightIndicator;
 import com.lying.variousgods.client.model.ModelHearthLightLantern;
+import com.lying.variousgods.client.renderer.blockentity.BloodAltarEntityRenderer;
 import com.lying.variousgods.client.renderer.blockentity.TomeAltarEntityRenderer;
 import com.lying.variousgods.client.renderer.entity.EntityHearthLightRenderer;
 import com.lying.variousgods.init.VGBlockEntities;
@@ -27,9 +27,6 @@ public class RenderRegistry
 	@SubscribeEvent
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event)
 	{
-//		if(ConfigVO.GENERAL.verboseLogs())
-			VariousGods.LOG.info("Registering renderers");
-		
 		event.registerEntityRenderer(VGEntities.HEARTH_LIGHT.get(), EntityHearthLightRenderer::new);
 		event.registerEntityRenderer(VGEntities.GUARD_ZOMBIE.get(), ZombieRenderer::new);
 		event.registerEntityRenderer(VGEntities.GUARD_SKELETON.get(), SkeletonRenderer::new);
@@ -38,9 +35,6 @@ public class RenderRegistry
 	@SubscribeEvent
 	public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
 	{
-//		if(ConfigVO.GENERAL.verboseLogs())
-			VariousGods.LOG.info("Registering model layers");
-		
 		event.registerLayerDefinition(VGModelLayers.HEARTH_LANTERN, () -> ModelHearthLightLantern.createBodyLayer());
 		event.registerLayerDefinition(VGModelLayers.HEARTH_INDICATOR, () -> ModelHearthLightIndicator.createBodyLayer());
 	}
@@ -49,5 +43,6 @@ public class RenderRegistry
 	public static void registerTileRenderers(ModelEvent.RegisterAdditional event)
 	{
 		BlockEntityRenderers.register(VGBlockEntities.TOME_ALTAR.get(), TomeAltarEntityRenderer::new);
+		BlockEntityRenderers.register(VGBlockEntities.BLOOD_ALTAR.get(), BloodAltarEntityRenderer::new);
 	}
 }

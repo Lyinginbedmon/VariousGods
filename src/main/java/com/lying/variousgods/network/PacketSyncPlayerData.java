@@ -3,9 +3,8 @@ package com.lying.variousgods.network;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-import com.lying.variousgods.VariousGods;
 import com.lying.variousgods.capabilities.PlayerData;
-import com.lying.variousgods.proxy.CommonProxy;
+import com.lying.variousgods.client.ClientSetupEvents;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -63,10 +62,6 @@ public class PacketSyncPlayerData
 				PacketHandler.sendTo(player, new PacketSyncPlayerData(msg.playerID, PlayerData.getCapability(target)));
 		}
 		else
-		{
-			Player localPlayer = ((CommonProxy)VariousGods.PROXY).getPlayerEntity(context);
-			if(localPlayer != null)
-				PlayerData.getCapability(localPlayer).deserializeNBT(msg.dataNBT);
-		}
+			ClientSetupEvents.getLocalData().deserializeNBT(msg.dataNBT);
 	}
 }

@@ -52,6 +52,11 @@ public class Deity
 		this(simpleNameIn, Component.translatable("deity."+Reference.ModInfo.MOD_ID+"."+simpleNameIn+"_name"), itemIn, Component.translatable("deity."+Reference.ModInfo.MOD_ID+"."+simpleNameIn+"_desc").withStyle(ChatFormatting.ITALIC), personalityIn, seed, domainsIn);
 	}
 	
+	public Deity(String simpleNameIn, Component nameIn, ItemStack itemIn, Component description, long seed, List<TagKey<Miracle>> domainsIn)
+	{
+		this(simpleNameIn, nameIn, itemIn, description, new PersonalityModel(), seed, domainsIn);
+	}
+	
 	public Deity(String simpleNameIn, Component nameIn, ItemStack itemIn, Component description, PersonalityModel personalityIn, long seed, List<TagKey<Miracle>> domainsIn)
 	{
 		this.simpleName = simpleNameIn;
@@ -63,10 +68,6 @@ public class Deity
 		if(domainsIn != null)
 			this.domains.addAll(domainsIn);
 		this.displayItem = itemIn;
-	}
-	public Deity(String simpleNameIn, Component nameIn, ItemStack itemIn, Component description, long seed, List<TagKey<Miracle>> domainsIn)
-	{
-		this(simpleNameIn, nameIn, itemIn, description, new PersonalityModel(), seed, domainsIn);
 	}
 	
 	public Deity setFunctions(CommandFunction.CacheableFunction pray, CommandFunction.CacheableFunction selected, CommandFunction.CacheableFunction first, CommandFunction.CacheableFunction abandoned)

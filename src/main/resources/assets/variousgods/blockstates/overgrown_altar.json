@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "variousgods:block/altar_overgrown"
+    },
+    "facing=east": {
+      "model": "variousgods:block/altar_overgrown",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "variousgods:block/altar_overgrown",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "variousgods:block/altar_overgrown",
+      "y": 270
+    }
+  }
+}

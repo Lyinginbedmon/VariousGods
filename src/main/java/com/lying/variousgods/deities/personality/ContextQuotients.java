@@ -55,7 +55,7 @@ public class ContextQuotients
 	public static RegistryObject<ContextQuotient> ENCHANTING = register("enchanting", () -> playerValue(new ResourceLocation(Reference.ModInfo.MOD_ID, "enchanting"), 100D));
 	public static RegistryObject<ContextQuotient> SMELTING = register("smelting", () -> playerValue(new ResourceLocation(Reference.ModInfo.MOD_ID, "smelting"), 100D));
 	public static RegistryObject<ContextQuotient> BREWING = register("brewing", () -> playerValue(new ResourceLocation(Reference.ModInfo.MOD_ID, "brewing"), 100D));
-	public static RegistryObject<ContextQuotient> PRAYER = register("prayer", () -> ContextQuotient.staticValue(0D));	// TODO Action based on interaction with matching altar
+	public static RegistryObject<ContextQuotient> PRAYER = register("prayer", () -> playerValue(new ResourceLocation(Reference.ModInfo.MOD_ID, "prayer"), 100D));
 	public static RegistryObject<ContextQuotient> EAT_MEAT = register("eating_meat", () -> playerDiet(VGItemTags.MEAT));
 	public static RegistryObject<ContextQuotient> EAT_VEG = register("eating_veg", () -> playerDiet(VGItemTags.VEGETABLE));
 	public static RegistryObject<ContextQuotient> EAT_FISH = register("eating_fish", () -> playerDiet(ItemTags.FISHES));

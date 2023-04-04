@@ -58,9 +58,5 @@ public class PacketPraying
 			else
 				data.setPraying();
 		}
-		else
-		{
-			
-		}
 	}
 }

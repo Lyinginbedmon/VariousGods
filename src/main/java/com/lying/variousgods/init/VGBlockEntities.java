@@ -1,5 +1,6 @@
 package com.lying.variousgods.init;
 
+import com.lying.variousgods.block.entity.BloodAltarEntity;
 import com.lying.variousgods.block.entity.TomeAltarEntity;
 import com.lying.variousgods.reference.Reference;
 
@@ -18,4 +19,5 @@ public class VGBlockEntities
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Reference.ModInfo.MOD_ID);
     
 	public static final RegistryObject<BlockEntityType<TomeAltarEntity>> TOME_ALTAR = BLOCK_ENTITIES.register("tome_altar", () -> BlockEntityType.Builder.of(TomeAltarEntity::new, VGBlocks.TOME_ALTAR.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "tome_altar")));
+	public static final RegistryObject<BlockEntityType<BloodAltarEntity>> BLOOD_ALTAR = BLOCK_ENTITIES.register("blood_altar", () -> BlockEntityType.Builder.of(BloodAltarEntity::new, VGBlocks.BLOOD_ALTAR.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "blood_altar")));
 }

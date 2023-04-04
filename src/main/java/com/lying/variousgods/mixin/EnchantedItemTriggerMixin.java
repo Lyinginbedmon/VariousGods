@@ -16,7 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class EnchantedItemTriggerMixin
 {
 	@Inject(method = "trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/item/ItemStack;I)V", at = @At("RETURN"))
-	public void onEnchantedItemTrigger(ServerPlayer player, ItemStack stack, int level, final CallbackInfo ci)
+	public void vargod_onEnchantedItemTrigger(ServerPlayer player, ItemStack stack, int level, final CallbackInfo ci)
 	{
 		MinecraftForge.EVENT_BUS.post(new PlayerEnchantItemEvent(player, stack, level));
 	}

@@ -24,7 +24,7 @@ public class ItemStackMixin
 	public UseAnim getUseAnimation() { return UseAnim.NONE; }
 	
 	@Inject(method = "finishUsingItem(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)Lnet/minecraft/world/item/ItemStack;", at = @At("HEAD"), cancellable = true)
-	public void finishUsingItem(Level world, LivingEntity living, final CallbackInfoReturnable<ItemStack> ci)
+	public void vargod_finishUsingItem(Level world, LivingEntity living, final CallbackInfoReturnable<ItemStack> ci)
 	{
 		ItemStack stack = (ItemStack)(Object)this;
 		LivingConsumableEvent event = null;
@@ -45,7 +45,7 @@ public class ItemStackMixin
 	}
 
 	@Inject(method = "hurt(ILnet/minecraft/util/RandomSource;Lnet/minecraft/server/level/ServerPlayer;)Z", at = @At("RETURN"), cancellable = true)
-	public void wouldBreakItem(int amount, RandomSource rand, ServerPlayer player, final CallbackInfoReturnable<Boolean> ci)
+	public void vargod_wouldBreakItem(int amount, RandomSource rand, ServerPlayer player, final CallbackInfoReturnable<Boolean> ci)
 	{
 		ItemStack stack = (ItemStack)(Object)this;
 		if(stack.getDamageValue() < stack.getMaxDamage())

@@ -27,7 +27,7 @@ public class BrewingStandBlockEntityMixin
 	private static boolean isBrewable(NonNullList<ItemStack> p_155295_) { return false; }
 	
 	@Inject(method = "serverTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BrewingStandBlockEntity;)V", at = @At("HEAD"))
-	private static void serverTickHead(Level world, BlockPos pos, BlockState state, BrewingStandBlockEntity entity, final CallbackInfo ci)
+	private static void vargod_serverTickHead(Level world, BlockPos pos, BlockState state, BrewingStandBlockEntity entity, final CallbackInfo ci)
 	{
 		AccessorBrewingStandBlockEntity accessor = (AccessorBrewingStandBlockEntity)entity;
 		NonNullList<ItemStack> contents = accessor.getItems();
@@ -53,7 +53,7 @@ public class BrewingStandBlockEntityMixin
 	}
 	
 	@Inject(method = "serverTick(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BrewingStandBlockEntity;)V", at = @At("RETURN"))
-	private static void serverTickFoot(Level world, BlockPos pos, BlockState state, BrewingStandBlockEntity entity, final CallbackInfo ci)
+	private static void vargod_serverTickFoot(Level world, BlockPos pos, BlockState state, BrewingStandBlockEntity entity, final CallbackInfo ci)
 	{
 		if(isBrewFinish)
 		{
@@ -75,7 +75,7 @@ public class BrewingStandBlockEntityMixin
 		}
 	}
 	
-	public void incCycle(int slot) { brewCycles.set(slot%3, brewCycles.get(slot%3) + 1); }
+	public void vargod_incCycle(int slot) { brewCycles.set(slot%3, brewCycles.get(slot%3) + 1); }
 	
-	public int removeItem(int slot) { return brewCycles.set(slot%3, 0); }
+	public int vargod_removeItem(int slot) { return brewCycles.set(slot%3, 0); }
 }

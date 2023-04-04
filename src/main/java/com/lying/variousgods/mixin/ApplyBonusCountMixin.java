@@ -38,7 +38,7 @@ public class ApplyBonusCountMixin
 	ApplyBonusCount.Formula formula;
 	
 	@Inject(method = "run(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/storage/loot/LootContext;)Lnet/minecraft/world/item/ItemStack;", at = @At("HEAD"), cancellable = true)
-	public void run(ItemStack stack, LootContext context, final CallbackInfoReturnable<ItemStack> ci)
+	public void vargod_run(ItemStack stack, LootContext context, final CallbackInfoReturnable<ItemStack> ci)
 	{
 		if(enchantment != Enchantments.BLOCK_FORTUNE)
 			return;

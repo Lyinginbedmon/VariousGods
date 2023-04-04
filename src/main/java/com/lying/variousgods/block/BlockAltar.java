@@ -4,6 +4,7 @@ import java.util.function.ToIntFunction;
 
 import javax.annotation.Nullable;
 
+import com.lying.variousgods.block.entity.BloodAltarEntity;
 import com.lying.variousgods.block.entity.TomeAltarEntity;
 import com.lying.variousgods.capabilities.PlayerData;
 import com.lying.variousgods.client.gui.menu.MenuAltarStart;
@@ -218,7 +219,6 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 	 * Mushroom altar
 	 * Blazing altar
 	 * Ender altar
-	 * Tome altar
 	 * Overgrown altar
 	 * Blood altar
 	 */
@@ -379,5 +379,52 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return BOUNDING_SHAPES[state.getValue(FACING).get2DDataValue()]; }
 		
 		public float getEnchantPowerBonus(BlockState state, LevelReader level, BlockPos pos) { return 0.3F; }
+	}
+	
+	public static class Floral extends BlockAltar
+	{
+		public Floral(Properties p_49795_) { super(p_49795_); }
+	}
+	
+	public static class Redstone extends BlockAltar
+	{
+		public Redstone(Properties p_49795_) { super(p_49795_); }
+	}
+	
+	public static class Fountain extends BlockAltar
+	{
+		public Fountain(Properties p_49795_) { super(p_49795_); }
+	}
+	
+	public static class Winged extends BlockAltar
+	{
+		public Winged(Properties p_49795_) { super(p_49795_); }
+	}
+	
+	public static class Mushroom extends BlockAltar	// FIXME Needs particles
+	{
+		public Mushroom(Properties p_49795_) { super(p_49795_); }
+	}
+	
+	public static class Blaze extends BlockAltarExtinguishable	// FIXME Needs particles, custom lighting
+	{
+		public Blaze(Properties p_49795_) { super(p_49795_); }
+	}
+	
+	public static class Ender extends BlockAltar	// FIXME Needs particles, portal while praying?
+	{
+		public Ender(Properties p_49795_) { super(p_49795_); }
+	}
+	
+	public static class Overgrown extends BlockAltar
+	{
+		public Overgrown(Properties p_49795_) { super(p_49795_); }
+	}
+	
+	public static class Blood extends BlockAltar implements EntityBlock	// FIXME Deal 1 damage when praying, tile renderer for knife
+	{
+		public Blood(Properties p_49795_) { super(p_49795_); }
+		
+		public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new BloodAltarEntity(pos, state); }
 	}
 }

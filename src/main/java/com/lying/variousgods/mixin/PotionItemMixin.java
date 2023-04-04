@@ -28,8 +28,8 @@ public class PotionItemMixin
 {
 	private Map<MobEffect, MobEffectInstance> effectMap = new HashMap<>();
 	
-	@Inject(method = "finishUsingItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)V", at = @At("HEAD"))
-	public void finishUsingStart(ItemStack stack, Level world, LivingEntity mob, final CallbackInfoReturnable<ItemStack> ci)
+	@Inject(method = "finishUsingItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)Lnet/minecraft/world/item/ItemStack;", at = @At("HEAD"))
+	public void vargod_finishUsingStart(ItemStack stack, Level world, LivingEntity mob, final CallbackInfoReturnable<ItemStack> ci)
 	{
 		if(mob.getType() != EntityType.PLAYER || world.isClientSide())
 			return;
@@ -42,8 +42,8 @@ public class PotionItemMixin
 		}
 	}
 	
-	@Inject(method = "finishUsingItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)V", at = @At("RETURN"))
-	public void finishUsingReturn(ItemStack stack, Level world, LivingEntity mob, final CallbackInfoReturnable<ItemStack> ci)
+	@Inject(method = "finishUsingItem(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)Lnet/minecraft/world/item/ItemStack;", at = @At("RETURN"))
+	public void vargod_finishUsingReturn(ItemStack stack, Level world, LivingEntity mob, final CallbackInfoReturnable<ItemStack> ci)
 	{
 		if(mob.getType() != EntityType.PLAYER || world.isClientSide())
 			return;

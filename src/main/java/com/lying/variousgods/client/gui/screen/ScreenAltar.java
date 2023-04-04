@@ -13,11 +13,6 @@ public abstract class ScreenAltar<T extends MenuAltar> extends Screen implements
 {
 	protected final T altarMenu;
 	
-	public ScreenAltar()
-	{
-		this(null, null, Component.empty());
-	}
-	
 	public ScreenAltar(T altarIn, Inventory inv, Component displayName)
 	{
 		super(displayName);

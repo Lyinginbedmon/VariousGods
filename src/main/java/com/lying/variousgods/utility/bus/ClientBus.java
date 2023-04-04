@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.apache.commons.compress.utils.Lists;
 
-import com.lying.variousgods.VariousGods;
 import com.lying.variousgods.entities.EntityHearthLight;
 import com.lying.variousgods.utility.ExUtils;
 import com.lying.variousgods.utility.pathfinding.HearthLightPathfinder;
@@ -22,7 +21,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent.Stage;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -31,12 +29,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class ClientBus
 {
 	public static Minecraft mc = Minecraft.getInstance();
-	
-	public static void registerOverlayEvent(RegisterGuiOverlaysEvent event)
-	{
-		VariousGods.LOG.info("Registering overlays");
-//		event.registerAboveAll("god_status", new OverlayGodStatus());
-	}
 	
 	@SubscribeEvent
 	public static void renderHearthLightPaths(RenderLevelStageEvent event)

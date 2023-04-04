@@ -28,7 +28,7 @@ public class LivingEntityMixin
 	private Map<MobEffect, MobEffectInstance> effectMap = new HashMap<>();
 	
 	@Inject(method = "addEatEffect(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)V", at = @At("HEAD"))
-	public void eatEffectStart(ItemStack stack, Level world, LivingEntity mob, final CallbackInfo ci)
+	public void vargod_eatEffectStart(ItemStack stack, Level world, LivingEntity mob, final CallbackInfo ci)
 	{
 		if(mob.getType() != EntityType.PLAYER || world.isClientSide())
 			return;
@@ -42,7 +42,7 @@ public class LivingEntityMixin
 	}
 	
 	@Inject(method = "addEatEffect(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;)V", at = @At("RETURN"))
-	public void eatEffectReturn(ItemStack stack, Level world, LivingEntity mob, final CallbackInfo ci)
+	public void vargod_eatEffectReturn(ItemStack stack, Level world, LivingEntity mob, final CallbackInfo ci)
 	{
 		if(mob.getType() != EntityType.PLAYER || world.isClientSide())
 			return;

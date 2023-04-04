@@ -41,7 +41,6 @@ public class Miracles
 	public static final RegistryObject<Miracle> DEATHGUARD = register("deathguard", () -> new MiracleSummon.DeathGuard());
 	// Momma Bear - Spawns a group of temporary friendly regional animals to protect you
 	// Adder's Nest - Spawns a group of temporary friendly snakes to protect you
-	// Hearth Light - Spawns a will o' wisp that paths towards your spawn point
 	public static final RegistryObject<Miracle> HEARTH_LIGHT = register("hearth_light", () -> new MiracleSummon.HearthLight());
 	
 	private static RegistryObject<Miracle> register(String nameIn, Supplier<Miracle> miracleIn)

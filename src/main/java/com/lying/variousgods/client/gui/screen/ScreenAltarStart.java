@@ -15,11 +15,6 @@ public class ScreenAltarStart extends ScreenAltar<MenuAltarStart>
 {
 	private Button chooseGodButton, startPrayingButton;
 	
-	public ScreenAltarStart()
-	{
-		this(null, null, Component.empty());
-	}
-	
 	public ScreenAltarStart(MenuAltar altarIn, Inventory inv, Component displayName)
 	{
 		super((MenuAltarStart)altarIn, inv, displayName);

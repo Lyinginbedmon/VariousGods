@@ -24,5 +24,16 @@ public class VGBlocks
     public static final RegistryObject<Block> CRYSTAL_ALTAR = BLOCKS.register("crystal_altar", () -> new BlockAltar.Crystal(BlockBehaviour.Properties.of(Material.AMETHYST).noOcclusion()));
     public static final RegistryObject<Block> TOME_ALTAR = BLOCKS.register("tome_altar", () -> new BlockAltar.Tome(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion()));
     
+    // WIP Altars
+    public static final RegistryObject<Block> FLORAL_ALTAR = BLOCKS.register("floral_altar", () -> new BlockAltar.Floral(BlockBehaviour.Properties.of(Material.PLANT).noOcclusion()));
+    public static final RegistryObject<Block> REDSTONE_ALTAR = BLOCKS.register("redstone_altar", () -> new BlockAltar.Redstone(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+    public static final RegistryObject<Block> FOUNTAIN_ALTAR = BLOCKS.register("fountain_altar", () -> new BlockAltar.Fountain(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+    public static final RegistryObject<Block> WINGED_ALTAR = BLOCKS.register("winged_altar", () -> new BlockAltar.Winged(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion()));
+    public static final RegistryObject<Block> MUSHROOM_ALTAR = BLOCKS.register("mushroom_altar", () -> new BlockAltar.Mushroom(BlockBehaviour.Properties.of(Material.PLANT).noOcclusion().noCollission()));
+    public static final RegistryObject<Block> BLAZE_ALTAR = BLOCKS.register("blaze_altar", () -> new BlockAltar.Blaze(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+    public static final RegistryObject<Block> ENDER_ALTAR = BLOCKS.register("ender_altar", () -> new BlockAltar.Ender(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+    public static final RegistryObject<Block> OVERGROWN_ALTAR = BLOCKS.register("overgrown_altar", () -> new BlockAltar.Overgrown(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+    public static final RegistryObject<Block> BLOOD_ALTAR = BLOCKS.register("blood_altar", () -> new BlockAltar.Blood(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+    
     public static void init() { }
 }

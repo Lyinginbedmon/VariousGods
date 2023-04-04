@@ -12,8 +12,8 @@ import org.apache.commons.compress.utils.Lists;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.lying.variousgods.VariousGods;
 import com.lying.variousgods.api.event.PlayerPrayerEvent;
+import com.lying.variousgods.client.ClientSetupEvents;
 import com.lying.variousgods.deities.Deity;
 import com.lying.variousgods.deities.DeityRegistry;
 import com.lying.variousgods.deities.miracle.BindingContract;
@@ -22,7 +22,6 @@ import com.lying.variousgods.deities.personality.ContextQuotients;
 import com.lying.variousgods.init.ExCapabilities;
 import com.lying.variousgods.network.PacketHandler;
 import com.lying.variousgods.network.PacketSyncPlayerData;
-import com.lying.variousgods.proxy.CommonProxy;
 import com.lying.variousgods.reference.Reference;
 
 import net.minecraft.core.BlockPos;
@@ -95,7 +94,7 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 		if(player == null)
 			return null;
 		else if(player.getLevel().isClientSide())
-			return ((CommonProxy)VariousGods.PROXY).getPlayerData(player);
+			return ClientSetupEvents.getPlayerData(player);
 		
 		PlayerData data = player.getCapability(ExCapabilities.PLAYER_DATA).orElse(new PlayerData(player));
 		data.thePlayer = player;

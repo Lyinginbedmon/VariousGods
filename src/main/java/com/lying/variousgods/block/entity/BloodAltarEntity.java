@@ -6,9 +6,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class TomeAltarEntity extends BlockEntity
+public class BloodAltarEntity extends BlockEntity
 {
-	public TomeAltarEntity(BlockPos pos, BlockState state)
+	public BloodAltarEntity(BlockPos pos, BlockState state)
 	{
 		super(VGBlockEntities.BLOOD_ALTAR.get(), pos, state);
 	}

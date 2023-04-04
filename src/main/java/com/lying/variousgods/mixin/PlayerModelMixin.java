@@ -17,7 +17,7 @@ import net.minecraft.world.entity.player.Player;
 public class PlayerModelMixin<T extends LivingEntity>
 {
 	@Inject(method = "setupAnim", at = @At("RETURN"))
-	public void setupAnim(T player, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo callbackInfo)
+	public void vargod_setupAnim(T player, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo callbackInfo)
 	{
 		if(player.getType() == EntityType.PLAYER && PlayerData.getCapability((Player)player).isPraying())
 			performPrayer((HumanoidModel<?>)(Object)this, ageInTicks);
