@@ -16,7 +16,7 @@ public class VGItems
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.ModInfo.MOD_ID);
     
     public static final RegistryObject<Item> REAPER_BAG_ITEM = ITEMS.register("reaper_bag", () -> new BlockItem(VGBlocks.REAPER_BAG.get(), new Item.Properties()));
-    public static final RegistryObject<Item> SOUL_KNIFE = ITEMS.register("soul_knife", () -> new SwordItem(Tiers.NETHERITE, 3, -2.4F, new Item.Properties()));
+    public static final RegistryObject<Item> SOUL_KNIFE = ITEMS.register("soul_knife", () -> new SwordItem(Tiers.NETHERITE, 3, -3.2F, new Item.Properties()));
     
     public static final RegistryObject<Item> STONE_ALTAR_ITEM = ITEMS.register("stone_altar", () -> new BlockItem(VGBlocks.STONE_ALTAR.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
     public static final RegistryObject<Item> HOURGLASS_ALTAR_ITEM = ITEMS.register("hourglass_altar", () -> new BlockItem(VGBlocks.HOURGLASS_ALTAR.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));

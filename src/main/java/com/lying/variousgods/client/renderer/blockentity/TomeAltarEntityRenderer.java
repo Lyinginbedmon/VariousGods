@@ -6,7 +6,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BookModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -18,7 +17,6 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class TomeAltarEntityRenderer implements BlockEntityRenderer<TomeAltarEntity>
 {
-	private static final Minecraft mc = Minecraft.getInstance();
 	private final BookModel bookModel;
 	
 	public TomeAltarEntityRenderer(BlockEntityRendererProvider.Context p_i226017_1_)
@@ -37,7 +35,7 @@ public class TomeAltarEntityRenderer implements BlockEntityRenderer<TomeAltarEnt
 				matrixStack.mulPose(Vector3f.YP.rotationDegrees(-facing));
 				matrixStack.mulPose(Vector3f.ZP.rotationDegrees(67.5F));
 				matrixStack.translate(0D, -0.125D, 0D);
-				if(BlockAltar.isPlayerPrayingAt(mc.player, altarTile.getBlockPos()))
+				if(state.getValue(BlockAltar.PRAYING))
 				{
 					this.bookModel.setupAnim(0F, 0.1F, 0.9F, 1.2F);
 					VertexConsumer consumer = EnchantTableRenderer.BOOK_LOCATION.buffer(bufferSource, RenderType::entitySolid);

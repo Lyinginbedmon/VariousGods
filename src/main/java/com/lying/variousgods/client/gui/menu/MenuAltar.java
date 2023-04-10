@@ -36,7 +36,11 @@ public abstract class MenuAltar extends AbstractContainerMenu implements MenuPro
 	
 	public void removed(Player player)
 	{
+		super.removed(player);
 		if(player instanceof ServerPlayer)
-			PlayerData.getCapability(player).setPraying();
+		{
+			PlayerData data = PlayerData.getCapability(player);
+			data.stopPraying();
+		}
 	}
 }

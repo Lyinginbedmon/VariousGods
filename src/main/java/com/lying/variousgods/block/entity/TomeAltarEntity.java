@@ -10,6 +10,6 @@ public class TomeAltarEntity extends BlockEntity
 {
 	public TomeAltarEntity(BlockPos pos, BlockState state)
 	{
-		super(VGBlockEntities.BLOOD_ALTAR.get(), pos, state);
+		super(VGBlockEntities.TOME_ALTAR.get(), pos, state);
 	}
 }

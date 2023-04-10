@@ -1,33 +1,18 @@
 {
   "variants": {
-    "facing=north,waterlogged=false": {
+    "facing=north": {
       "model": "variousgods:block/altar_blood"
     },
-    "facing=east,waterlogged=false": {
+    "facing=east": {
       "model": "variousgods:block/altar_blood",
       "y": 90
     },
-    "facing=south,waterlogged=false": {
+    "facing=south": {
       "model": "variousgods:block/altar_blood",
       "y": 180
     },
-    "facing=west,waterlogged=false": {
+    "facing=west": {
       "model": "variousgods:block/altar_blood",
-      "y": 270
-    },
-    "facing=north,waterlogged=true": {
-      "model": "variousgods:block/altar_blood_empty"
-    },
-    "facing=east,waterlogged=true": {
-      "model": "variousgods:block/altar_blood_empty",
-      "y": 90
-    },
-    "facing=south,waterlogged=true": {
-      "model": "variousgods:block/altar_blood_empty",
-      "y": 180
-    },
-    "facing=west,waterlogged=true": {
-      "model": "variousgods:block/altar_blood_empty",
       "y": 270
     }
   }

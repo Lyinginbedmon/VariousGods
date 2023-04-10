@@ -10,6 +10,7 @@ import com.lying.variousgods.deities.DeityRegistry;
 import com.lying.variousgods.deities.miracle.Miracles;
 import com.lying.variousgods.init.VGBlockEntities;
 import com.lying.variousgods.init.VGBlocks;
+import com.lying.variousgods.init.VGCapabilities;
 import com.lying.variousgods.init.VGEnchantments;
 import com.lying.variousgods.init.VGEntities;
 import com.lying.variousgods.init.VGItems;
@@ -52,6 +53,7 @@ public class VariousGods
         EVENT_BUS.addListener(this::commonSetup);
         EVENT_BUS.addListener(this::completeSetup);
         EVENT_BUS.addListener(VGDataGenerators::onGatherData);
+        EVENT_BUS.addListener(VGCapabilities::onRegisterCapabilities);
         
         VGEntities.ENTITIES.register(EVENT_BUS);
         VGBlockEntities.BLOCK_ENTITIES.register(EVENT_BUS);

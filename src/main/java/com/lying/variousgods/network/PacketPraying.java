@@ -20,10 +20,10 @@ public class PacketPraying
 	{
 		this(idIn, BlockPos.ZERO);
 	}
-	public PacketPraying(UUID idIn, BlockPos operation)
+	public PacketPraying(UUID idIn, BlockPos altar)
 	{
 		this.playerID = idIn;
-		this.altarPos = operation;
+		this.altarPos = altar;
 	}
 	
 	public static PacketPraying decode(FriendlyByteBuf par1Buffer)
@@ -36,7 +36,7 @@ public class PacketPraying
 	public static void encode(PacketPraying msg, FriendlyByteBuf par1Buffer)
 	{
 		par1Buffer.writeUUID(msg.playerID);
-		par1Buffer.writeBlockPos(msg.altarPos == null ? BlockPos.ZERO : msg.altarPos);
+		par1Buffer.writeBlockPos(msg.altarPos);
 	}
 	
 	public static void handle(PacketPraying msg, Supplier<NetworkEvent.Context> cxt)
@@ -51,12 +51,14 @@ public class PacketPraying
 				target = player;
 			else
 				target = player.getLevel().getPlayerByUUID(msg.playerID);
+			if(target == null)
+				return;
 			
 			PlayerData data = PlayerData.getCapability(target);
-			if(msg.altarPos != BlockPos.ZERO)
-				data.setPraying(msg.altarPos);
+			if(data.hasAltar())
+				data.startPraying();
 			else
-				data.setPraying();
+				data.stopPraying();
 		}
 	}
 }

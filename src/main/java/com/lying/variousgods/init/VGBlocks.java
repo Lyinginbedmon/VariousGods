@@ -33,6 +33,7 @@ public class VGBlocks
     public static final RegistryObject<Block> BLAZE_ALTAR = BLOCKS.register("blaze_altar", () -> new BlockAltar.Blaze(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
     public static final RegistryObject<Block> ENDER_ALTAR = BLOCKS.register("ender_altar", () -> new BlockAltar.Ender(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
     public static final RegistryObject<Block> OVERGROWN_ALTAR = BLOCKS.register("overgrown_altar", () -> new BlockAltar.Overgrown(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+    public static final RegistryObject<Block> BLOOD_ALTAR_LIQUID = BLOCKS.register("blood_altar_liquid", () -> new BlockAltar.Blood.Liquid(BlockBehaviour.Properties.of(Material.STONE)));
     public static final RegistryObject<Block> BLOOD_ALTAR = BLOCKS.register("blood_altar", () -> new BlockAltar.Blood(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
     
     public static void init() { }

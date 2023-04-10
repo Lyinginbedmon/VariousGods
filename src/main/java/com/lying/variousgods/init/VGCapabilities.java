@@ -7,11 +7,11 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 
-public class ExCapabilities
+public class VGCapabilities
 {
 	public static final Capability<PlayerData> PLAYER_DATA	= CapabilityManager.get(new CapabilityToken<>() {});
 	
-	public static void onRegisterCapabilities(RegisterCapabilitiesEvent event)
+	public static void onRegisterCapabilities(final RegisterCapabilitiesEvent event)
 	{
 		event.register(PlayerData.class);
 	}

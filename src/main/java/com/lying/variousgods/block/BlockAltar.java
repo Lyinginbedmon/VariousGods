@@ -5,14 +5,17 @@ import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
 
 import com.lying.variousgods.block.entity.BloodAltarEntity;
+import com.lying.variousgods.block.entity.EnderAltarEntity;
 import com.lying.variousgods.block.entity.TomeAltarEntity;
 import com.lying.variousgods.capabilities.PlayerData;
 import com.lying.variousgods.client.gui.menu.MenuAltarStart;
+import com.lying.variousgods.init.VGBlockEntities;
 import com.lying.variousgods.reference.Reference;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -21,6 +24,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -38,6 +42,8 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -55,11 +61,12 @@ import net.minecraftforge.common.ForgeMod;
 public abstract class BlockAltar extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock, MenuProvider
 {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+	public static final BooleanProperty PRAYING = BooleanProperty.create("praying");
 	
 	public BlockAltar(Properties p_49795_)
 	{
 		super(p_49795_);
-		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(PRAYING, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -74,9 +81,16 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, Boolean.valueOf(state.getType() == Fluids.WATER));
 	}
 	
+	public static void setAltarInUse(BlockPos pos, Level world, boolean active)
+	{
+		BlockState state = world.getBlockState(pos);
+		if(!world.isClientSide() && state.hasProperty(PRAYING) && state.getValue(PRAYING) != active)
+			world.setBlockAndUpdate(pos, state.setValue(PRAYING, Boolean.valueOf(active)));
+	}
+	
 	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
 	{
-		if(!world.isClientSide() && canPrayAt(state, world, player))
+		if(!world.isClientSide() && canPrayAt(state, world, player) && !state.getValue(PRAYING))
 		{
 			PlayerData.getCapability(player).setAltarPos(pos);
 			player.openMenu(this);
@@ -87,7 +101,7 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 	
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_51385_)
 	{
-		p_51385_.add(FACING, WATERLOGGED);
+		p_51385_.add(FACING, PRAYING, WATERLOGGED);
 	}
 	
 	protected static void addParticlesAndSound(Level world, Vec3 pos, RandomSource rand)
@@ -106,11 +120,6 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 	/** Whether the given player can pray at this particular altar */
 	public boolean canPrayAt(BlockState state, Level world, Player player) { return true; }
 	
-	public static boolean isPlayerPrayingAt(Player player, BlockPos pos)
-	{
-		return PlayerData.getCapability(player).isPrayingAt(pos);
-	}
-	
 	public Component getDisplayName() { return Component.translatable("container."+Reference.ModInfo.MOD_ID+".altar"); }
 	
 	public AbstractContainerMenu createMenu(int containerId, Inventory inv, Player player)
@@ -119,10 +128,19 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		return new MenuAltarStart(containerId, player.pick(range, 0F, false));
 	}
 	
+	public void onPrayerComplete(Player thePlayer) { }
+	
+	@SuppressWarnings("unchecked")
+	@Nullable
+	protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> p_152133_, BlockEntityType<E> p_152134_, BlockEntityTicker<? super E> p_152135_)
+	{
+		return p_152134_ == p_152133_ ? (BlockEntityTicker<A>)p_152135_ : null;
+	}
+	
 	protected static abstract class BlockAltarLight extends BlockAltar
 	{
 		public static final BooleanProperty LIT = BlockStateProperties.LIT;
-		public static ToIntFunction<BlockState> DEFAULT_EMISSION = (p_152848_) -> {
+		public static final ToIntFunction<BlockState> DEFAULT_EMISSION = (p_152848_) -> {
 				return p_152848_.getValue(LIT) ? 6 : 0;
 			};
 		
@@ -133,13 +151,14 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		
 		public BlockAltarLight(Properties properties, ToIntFunction<BlockState> emission)
 		{
-			super(properties.lightLevel(DEFAULT_EMISSION));
+			super(properties.lightLevel(emission));
 			this.registerDefaultState(super.defaultBlockState().setValue(LIT, true));
 		}
 		
 		protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_51385_)
 		{
-			p_51385_.add(FACING, WATERLOGGED, LIT);
+			super.createBlockStateDefinition(p_51385_);
+			p_51385_.add(LIT);
 		}
 		
 		protected static void setLit(LevelAccessor world, BlockState state, BlockPos pos, boolean isLit)
@@ -214,19 +233,9 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 	/*
 	 * Floral altar
 	 * Redstone altar
-	 * Fountain altar
 	 * Winged altar
-	 * Mushroom altar
-	 * Blazing altar
-	 * Ender altar
-	 * Overgrown altar
-	 * Blood altar
 	 */
 	
-	/**
-	 * A simple stone altar
-	 * @author Remem
-	 */
 	public static class Stone extends BlockAltar
 	{
 		protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 5.0D, 14.0D);
@@ -239,10 +248,6 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		public VoxelShape getShape(BlockState p_51309_, BlockGetter p_51310_, BlockPos p_51311_, CollisionContext p_51312_) { return SHAPE; }
 	}
 	
-	/**
-	 * A simple wooden plinth
-	 * @author Remem
-	 */
 	public static class Wooden extends BlockAltar
 	{
 		protected static final VoxelShape SHAPE_Z = Block.box(0D, 0.0D, 4.0D, 16D, 3D, 12.0D);
@@ -259,10 +264,6 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		}
 	}
 	
-	/**
-	 * A golden hourglass
-	 * @author Remem
-	 */
 	public static class Hourglass extends BlockAltar
 	{
 		protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 13.0D, 12.0D);
@@ -275,10 +276,6 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		public VoxelShape getShape(BlockState p_51309_, BlockGetter p_51310_, BlockPos p_51311_, CollisionContext p_51312_) { return SHAPE; }
 	}
 	
-	/**
-	 * A golden tray with a quartz stand
-	 * @author Remem
-	 */
 	public static class Golden extends BlockAltar
 	{
 		protected static final VoxelShape SHAPE_Z = Block.box(1.5D, 0.0D, 3.0D, 14.5D, 3.5D, 13.0D);
@@ -295,10 +292,6 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		}
 	}
 	
-	/**
-	 * A skull and adjacent candle
-	 * @author Remem
-	 */
 	public static class Bone extends BlockAltarExtinguishable
 	{
 		private static final Vec3[] candleOffsets = new Vec3[]
@@ -359,7 +352,7 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 	
 	public static class Tome extends BlockAltar implements EntityBlock
 	{
-		private static final VoxelShape[] BOUNDING_SHAPES = new VoxelShape[]
+		private static final VoxelShape[] SHAPES = new VoxelShape[]
 				{
 					Shapes.or(Block.box(1D, 0D, 10.75D, 15D, 4D, 14.75D), Block.box(1D, 1.5D, 6.75D, 15D, 5.5D, 10.75D), Block.box(1D, 3D, 2.75D, 15D, 7D, 6.75D), Block.box(2D, 0D, 6.75D, 14D, 3D, 11.75D)),
 					Shapes.or(Block.box(1.25D, 0D, 1D, 5.25D, 4D, 15D), Block.box(5.25D, 1.5D, 1D, 9.25D, 5.5D, 15D), Block.box(9.25D, 3D, 1D, 13.25D, 7D, 15D), Block.box(4.25D, 0D, 2D, 9.25D, 3D, 14D)),
@@ -376,7 +369,7 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		
 		public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new TomeAltarEntity(pos, state); }
 		
-		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return BOUNDING_SHAPES[state.getValue(FACING).get2DDataValue()]; }
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPES[state.getValue(FACING).get2DDataValue()]; }
 		
 		public float getEnchantPowerBonus(BlockState state, LevelReader level, BlockPos pos) { return 0.3F; }
 	}
@@ -393,7 +386,11 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 	
 	public static class Fountain extends BlockAltar
 	{
+		protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D);
+		
 		public Fountain(Properties p_49795_) { super(p_49795_); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPE; }
 	}
 	
 	public static class Winged extends BlockAltar
@@ -401,30 +398,136 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		public Winged(Properties p_49795_) { super(p_49795_); }
 	}
 	
-	public static class Mushroom extends BlockAltar	// FIXME Needs particles
+	public static class Mushroom extends BlockAltar
 	{
+		protected static final VoxelShape SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 9.0D, 13.0D);
+		
 		public Mushroom(Properties p_49795_) { super(p_49795_); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPE; }
+		
+		public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand)
+		{
+			super.animateTick(state, world, pos, rand);
+			if(rand.nextInt(10) == 0)
+				world.addParticle(ParticleTypes.MYCELIUM, (double)pos.getX() + rand.nextDouble(), (double)pos.getY() + 0.1D, (double)pos.getZ() + rand.nextDouble(), 0.0D, 0.0D, 0.0D);
+		}
 	}
 	
-	public static class Blaze extends BlockAltarExtinguishable	// FIXME Needs particles, custom lighting
+	public static class Blaze extends BlockAltarExtinguishable
 	{
-		public Blaze(Properties p_49795_) { super(p_49795_); }
+		private static final ToIntFunction<BlockState> LIGHT_EMISSION = (state) -> {
+			return state.getValue(LIT) ? 8 : 0;
+		};
+		protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 4.5D, 14.0D);
+		
+		public Blaze(Properties p_49795_) { super(p_49795_, LIGHT_EMISSION); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPE; }
+		
+		public boolean canPrayAt(BlockState state, Level world, Player player) { return state.getValue(LIT); }
+		
+		public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand)
+		{
+			if(state.getValue(LIT))
+			{
+				if(rand.nextInt(10) == 0)
+					world.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS, 0.5F + rand.nextFloat(), rand.nextFloat() * 0.7F + 0.6F, false);
+				
+				double d0 = (double)pos.getX() + (0.35D + rand.nextDouble() * 0.3D);
+				double d1 = (double)pos.getY() + 0.28D;
+				double d2 = (double)pos.getZ() + (0.35D + rand.nextDouble() * 0.3D);
+				world.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+				world.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+			}
+		}
 	}
 	
-	public static class Ender extends BlockAltar	// FIXME Needs particles, portal while praying?
+	public static class Ender extends BlockAltar implements EntityBlock
 	{
+		private static final double PARTICLE_DIST = 0.5D;
+		private static final VoxelShape[] SHAPES = new VoxelShape[]
+				{
+					Block.box(2D, 0D, 2D, 14D, 3D, 14D),
+					Block.box(3D, 0D, 2D, 14D, 3D, 14D),
+					Block.box(2D, 0D, 3D, 14D, 3D, 14D),
+					Block.box(2D, 0D, 2D, 13D, 3D, 14D)
+				};
+		
 		public Ender(Properties p_49795_) { super(p_49795_); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPES[state.getValue(FACING).get2DDataValue()]; }
+		
+		public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand)
+		{
+			super.animateTick(state, world, pos, rand);
+			
+			if(!state.getValue(PRAYING) || rand.nextInt(10) != 0)
+				return;
+			
+			Vec3 coreVec = getPortalVec(pos, state);
+			for(int i=0; i<4; i++)
+			{
+				Vec3 posVec = coreVec.add((rand.nextDouble() - 0.5D) * PARTICLE_DIST, (rand.nextDouble() - 0.5D) * PARTICLE_DIST, (rand.nextDouble() - 0.5D) * PARTICLE_DIST);
+				Vec3 vel = coreVec.subtract(posVec).normalize().scale(2D);
+				world.addParticle(ParticleTypes.PORTAL, posVec.x, posVec.y, posVec.z, vel.x, vel.y, vel.z);
+			}
+		}
+		
+		public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new EnderAltarEntity(pos, state); }
+		
+		@Nullable
+		public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type)
+		{
+			return createTickerHelper(type, VGBlockEntities.ENDER_ALTAR.get(), world.isClientSide() ? EnderAltarEntity::tick : null);
+		}
+		
+		public static Vec3 getPortalVec(BlockPos pos, BlockState state)
+		{
+			Vec3i normal = state.getValue(FACING).getOpposite().getNormal();
+			return new Vec3(pos.getX() + 0.5D, pos.getY() + 0.625D, pos.getZ() + 0.5D).add(new Vec3(normal.getX(), normal.getY(), normal.getZ()).scale(0.09375D));
+		}
 	}
 	
 	public static class Overgrown extends BlockAltar
 	{
+		private static final VoxelShape BASE = Block.box(0, 0, 0, 16, 2, 16);
+		private static final VoxelShape[] SHAPES = new VoxelShape[]
+				{
+					Shapes.or(BASE, Block.box(5D, 0D, 3D, 11D, 12D, 9D)),
+					Shapes.or(BASE, Block.box(7D, 0D, 5D, 13D, 12D, 11D)),
+					Shapes.or(BASE, Block.box(5D, 0D, 7D, 11D, 12D, 13D)),
+					Shapes.or(BASE, Block.box(3D, 0D, 5D, 9D, 12D, 11D))
+				};
+		
 		public Overgrown(Properties p_49795_) { super(p_49795_); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPES[state.getValue(FACING).get2DDataValue()]; }
 	}
 	
-	public static class Blood extends BlockAltar implements EntityBlock	// FIXME Deal 1 damage when praying, tile renderer for knife
+	public static class Blood extends BlockAltar implements EntityBlock
 	{
+		private static final VoxelShape[] SHAPES = new VoxelShape[]
+				{
+					Block.box(5D, 0D, 3D, 11D, 9.5D, 9D),
+					Block.box(7D, 0D, 5D, 13D, 9.5D, 11D),
+					Block.box(5D, 0D, 7D, 11D, 9.5D, 13D),
+					Block.box(3D, 0D, 5D, 9D, 9.5D, 11D)
+				};
+		
 		public Blood(Properties p_49795_) { super(p_49795_); }
 		
+		public void onPrayerComplete(Player player) { player.hurt(DamageSource.STARVE, 1F); }
+		
 		public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new BloodAltarEntity(pos, state); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPES[state.getValue(FACING).get2DDataValue()]; }
+		
+		public static class Liquid extends HorizontalDirectionalBlock
+		{
+			public Liquid(Properties p_49795_) { super(p_49795_); }
+			
+			protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_48725_) { p_48725_.add(FACING); }
+		}
 	}
 }

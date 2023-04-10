@@ -13,13 +13,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.lying.variousgods.api.event.PlayerPrayerEvent;
+import com.lying.variousgods.block.BlockAltar;
 import com.lying.variousgods.client.ClientSetupEvents;
 import com.lying.variousgods.deities.Deity;
 import com.lying.variousgods.deities.DeityRegistry;
 import com.lying.variousgods.deities.miracle.BindingContract;
 import com.lying.variousgods.deities.personality.ContextQuotient;
 import com.lying.variousgods.deities.personality.ContextQuotients;
-import com.lying.variousgods.init.ExCapabilities;
+import com.lying.variousgods.init.VGCapabilities;
 import com.lying.variousgods.network.PacketHandler;
 import com.lying.variousgods.network.PacketSyncPlayerData;
 import com.lying.variousgods.reference.Reference;
@@ -37,6 +38,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
@@ -86,7 +88,7 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 	
 	public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side)
 	{
-		return ExCapabilities.PLAYER_DATA.orEmpty(cap, LazyOptional.of(() -> this));
+		return VGCapabilities.PLAYER_DATA.orEmpty(cap, LazyOptional.of(() -> this));
 	}
 	
 	public static PlayerData getCapability(Player player)
@@ -96,7 +98,7 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 		else if(player.getLevel().isClientSide())
 			return ClientSetupEvents.getPlayerData(player);
 		
-		PlayerData data = player.getCapability(ExCapabilities.PLAYER_DATA).orElse(new PlayerData(player));
+		PlayerData data = player.getCapability(VGCapabilities.PLAYER_DATA).orElse(new PlayerData(player));
 		data.thePlayer = player;
 		return data;
 	}
@@ -268,8 +270,19 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 		return diet;
 	}
 	
-	public void setAltarPos(BlockPos pos) { this.altarPos = pos; markDirty(); }
-	public boolean isPrayingAt(BlockPos pos) { return isPraying() && pos.equals(altarPos); }
+	public void setAltarPos(BlockPos pos)
+	{
+		this.altarPos = pos;
+		markDirty();
+	}
+	public boolean hasAltar() { return this.altarPos.distSqr(BlockPos.ZERO) > 0; }
+	public BlockPos getAltarPos() { return this.altarPos; }
+	public void setCurrentAltar(boolean active)
+	{
+		BlockState state = thePlayer.getLevel().getBlockState(getAltarPos());
+		if(state.hasProperty(BlockAltar.PRAYING) && state.getValue(BlockAltar.PRAYING) != active)
+			thePlayer.getLevel().setBlockAndUpdate(getAltarPos(), state.setValue(BlockAltar.PRAYING, Boolean.valueOf(active)));
+	}
 	
 	public void tick()
 	{
@@ -277,17 +290,26 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 		if(god == null || thePlayer == null || thePlayer.getLevel().isClientSide())
 			return;
 		
-		if(this.prayingTicks > 0 && --this.prayingTicks == 0)
+		if(isPraying())
 		{
-			this.prayingCooldown = Reference.Values.TICKS_PER_MINUTE * 5;
-			if(!MinecraftForge.EVENT_BUS.post(new PlayerPrayerEvent(thePlayer, god, thePlayer.blockPosition())))
+			if(--this.prayingTicks == 0)
 			{
-				addQuotient(ContextQuotients.PRAYER.getId(), 1);
-				god.onPlayerPray((ServerPlayer)thePlayer);
+				BlockState state = thePlayer.getLevel().getBlockState(getAltarPos());
+				if(state.getBlock() instanceof BlockAltar)
+					((BlockAltar)state.getBlock()).onPrayerComplete(thePlayer);
+				
+				setCurrentAltar(false);
+				this.prayingCooldown = Reference.Values.TICKS_PER_MINUTE * 5;
+				if(!MinecraftForge.EVENT_BUS.post(new PlayerPrayerEvent(thePlayer, god, thePlayer.blockPosition())))
+				{
+					addQuotient(ContextQuotients.PRAYER.getId(), 1);
+					god.onPlayerPray((ServerPlayer)thePlayer);
+				}
 			}
+			else
+				setCurrentAltar(true);
 		}
-		
-		if(this.prayingCooldown > 0)
+		else if(this.prayingCooldown > 0)
 			--this.prayingCooldown;
 		
 		if(!this.queuedEvents.isEmpty())
@@ -357,16 +379,22 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 	public boolean canPray() { return this.prayingCooldown == 0; }
 	public boolean isPraying() { return this.prayingTicks > 0; }
 	
-	public void setPraying(BlockPos altarPos)
+	public void startPraying()
 	{
-		this.prayingTicks = Reference.Values.TICKS_PER_SECOND * 5;
+		if(hasAltar())
+		{
+			this.prayingTicks = Reference.Values.TICKS_PER_SECOND * 5;
+			BlockAltar.setAltarInUse(getAltarPos(), this.thePlayer.getLevel(), true);
+		}
 		markDirty();
 	}
 	
-	public void setPraying()
+	public void stopPraying()
 	{
+		if(hasAltar())
+			BlockAltar.setAltarInUse(getAltarPos(), this.thePlayer.getLevel(), false);
+		
 		this.prayingTicks = 0;
-		markDirty();
 	}
 	
 	public void markDirty() { this.isDirty = true; }

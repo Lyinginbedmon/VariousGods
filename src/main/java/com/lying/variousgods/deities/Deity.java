@@ -12,8 +12,8 @@ import com.lying.variousgods.VariousGods;
 import com.lying.variousgods.deities.miracle.Miracle;
 import com.lying.variousgods.deities.miracle.Miracles;
 import com.lying.variousgods.deities.personality.PersonalityModel;
-import com.lying.variousgods.init.VGRegistries;
 import com.lying.variousgods.init.MiracleTags;
+import com.lying.variousgods.init.VGRegistries;
 import com.lying.variousgods.reference.Reference;
 
 import net.minecraft.ChatFormatting;

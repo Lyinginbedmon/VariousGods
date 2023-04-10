@@ -1,0 +1,16 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"1": "block/water_still"
+	},
+	"elements": [
+		{
+			"name": "blood",
+			"from": [6, 8.5, 8],
+			"to": [10, 8.5, 12],
+			"faces": {
+				"up": {"uv": [0, 0, 4, 4], "texture": "#1", "tintindex": 0}
+			}
+		}
+	]
+}

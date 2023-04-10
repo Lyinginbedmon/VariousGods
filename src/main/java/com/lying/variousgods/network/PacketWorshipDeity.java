@@ -7,7 +7,6 @@ import com.lying.variousgods.capabilities.PlayerData;
 import com.lying.variousgods.client.gui.menu.MenuAltar;
 import com.lying.variousgods.deities.DeityRegistry;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -59,11 +58,9 @@ public class PacketWorshipDeity
 				target.openMenu((MenuAltar)target.containerMenu);
 			
 			if(data.hasDeity())
-				data.setPraying(BlockPos.ZERO);
+				data.startPraying();
 		}
 		else
-		{
-			
-		}
+			;
 	}
 }

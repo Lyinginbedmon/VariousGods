@@ -69,7 +69,7 @@ public class ClientSetupEvents
 	      }, VGBlocks.FOUNTAIN_ALTAR.get());
 		event.register((blockState, tintGetter, pos, layer) -> {
 	         return 16711680;
-	      }, VGBlocks.BLOOD_ALTAR.get());
+	      }, VGBlocks.BLOOD_ALTAR_LIQUID.get());
 	}
 	
     @SubscribeEvent
