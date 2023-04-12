@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.lying.variousgods.block.entity.BloodAltarEntity;
 import com.lying.variousgods.block.entity.EnderAltarEntity;
+import com.lying.variousgods.block.entity.FloralAltarEntity;
 import com.lying.variousgods.block.entity.TomeAltarEntity;
 import com.lying.variousgods.capabilities.PlayerData;
 import com.lying.variousgods.client.gui.menu.MenuAltarStart;
@@ -230,12 +231,6 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		}
 	}
 	
-	/*
-	 * Floral altar
-	 * Redstone altar
-	 * Winged altar
-	 */
-	
 	public static class Stone extends BlockAltar
 	{
 		protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 5.0D, 14.0D);
@@ -374,14 +369,59 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		public float getEnchantPowerBonus(BlockState state, LevelReader level, BlockPos pos) { return 0.3F; }
 	}
 	
-	public static class Floral extends BlockAltar
+	public static class Floral extends BlockAltar implements EntityBlock
 	{
+		protected static final VoxelShape SHAPE_X = Block.box(2.0D, 0.0D, 1.0D, 14.0D, 5.0D, 15.0D);
+		protected static final VoxelShape SHAPE_Z = Block.box(1.0D, 0.0D, 2.0D, 15.0D, 5.0D, 14.0D);
+		
 		public Floral(Properties p_49795_) { super(p_49795_); }
+		
+		public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new FloralAltarEntity(pos, state); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return state.getValue(FACING).getAxis() == Axis.X ? SHAPE_X : SHAPE_Z; }
 	}
 	
 	public static class Redstone extends BlockAltar
 	{
+		protected static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 2, 14);
+		
 		public Redstone(Properties p_49795_) { super(p_49795_); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPE; }
+		
+		public boolean isSignalSource(BlockState state) { return true; }
+		
+		public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction)
+		{
+			return state.getValue(PRAYING) ? 15 : 0;
+		}
+		
+		public int getDirectSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction)
+		{
+			return state.getValue(PRAYING) && direction == Direction.DOWN ? 15 : 0;
+		}
+		
+		public boolean hasAnalogOutputSignal(BlockState state) { return true; }
+		
+		public int getAnalogOutputSignal(BlockState state, Level world, BlockPos pos)
+		{
+			return getSignal(state, world, pos, Direction.DOWN);
+		}
+		
+		@SuppressWarnings("deprecation")
+		public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean par5Bool)
+		{
+			if(!par5Bool && !newState.is(state.getBlock()))
+			{
+				if(state.getValue(PRAYING))
+				{
+					world.updateNeighborsAt(pos, this);
+					world.updateNeighborsAt(pos.relative(Direction.DOWN), this);
+				}
+				
+				super.onRemove(state, world, pos, newState, par5Bool);
+			}
+		}
 	}
 	
 	public static class Fountain extends BlockAltar
@@ -393,7 +433,7 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPE; }
 	}
 	
-	public static class Winged extends BlockAltar
+	public static class Winged extends BlockAltar	// FIXME Wind chime?
 	{
 		public Winged(Properties p_49795_) { super(p_49795_); }
 	}

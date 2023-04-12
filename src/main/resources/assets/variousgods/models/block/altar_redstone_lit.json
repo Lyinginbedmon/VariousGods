@@ -1,0 +1,7 @@
+{
+	"parent": "variousgods:block/altar_redstone",
+	"textures": {
+		"0": "block/redstone_torch",
+		"particle": "block/redstone_torch"
+	}
+}

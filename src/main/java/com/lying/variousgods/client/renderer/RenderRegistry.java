@@ -3,9 +3,7 @@ package com.lying.variousgods.client.renderer;
 import com.lying.variousgods.client.VGModelLayers;
 import com.lying.variousgods.client.model.ModelHearthLightIndicator;
 import com.lying.variousgods.client.model.ModelHearthLightLantern;
-import com.lying.variousgods.client.renderer.blockentity.BloodAltarEntityRenderer;
-import com.lying.variousgods.client.renderer.blockentity.EnderAltarEntityRenderer;
-import com.lying.variousgods.client.renderer.blockentity.TomeAltarEntityRenderer;
+import com.lying.variousgods.client.renderer.blockentity.*;
 import com.lying.variousgods.client.renderer.entity.EntityHearthLightRenderer;
 import com.lying.variousgods.init.VGBlockEntities;
 import com.lying.variousgods.init.VGEntities;
@@ -46,5 +44,6 @@ public class RenderRegistry
 		BlockEntityRenderers.register(VGBlockEntities.TOME_ALTAR.get(), TomeAltarEntityRenderer::new);
 		BlockEntityRenderers.register(VGBlockEntities.BLOOD_ALTAR.get(), BloodAltarEntityRenderer::new);
 		BlockEntityRenderers.register(VGBlockEntities.ENDER_ALTAR.get(), EnderAltarEntityRenderer::new);
+		BlockEntityRenderers.register(VGBlockEntities.FLORAL_ALTAR.get(), FloralAltarEntityRenderer::new);
 	}
 }

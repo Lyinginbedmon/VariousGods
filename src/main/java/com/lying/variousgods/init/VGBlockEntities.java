@@ -20,4 +20,5 @@ public class VGBlockEntities
 	public static final RegistryObject<BlockEntityType<TomeAltarEntity>> TOME_ALTAR = BLOCK_ENTITIES.register("tome_altar", () -> BlockEntityType.Builder.of(TomeAltarEntity::new, VGBlocks.TOME_ALTAR.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "tome_altar")));
 	public static final RegistryObject<BlockEntityType<BloodAltarEntity>> BLOOD_ALTAR = BLOCK_ENTITIES.register("blood_altar", () -> BlockEntityType.Builder.of(BloodAltarEntity::new, VGBlocks.BLOOD_ALTAR.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "blood_altar")));
 	public static final RegistryObject<BlockEntityType<EnderAltarEntity>> ENDER_ALTAR = BLOCK_ENTITIES.register("ender_altar", () -> BlockEntityType.Builder.of(EnderAltarEntity::new, VGBlocks.ENDER_ALTAR.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ender_altar")));
+	public static final RegistryObject<BlockEntityType<FloralAltarEntity>> FLORAL_ALTAR = BLOCK_ENTITIES.register("floral_altar", () -> BlockEntityType.Builder.of(FloralAltarEntity::new, VGBlocks.FLORAL_ALTAR.get()).build(Util.fetchChoiceType(References.BLOCK_ENTITY, "floral_altar")));
 }

@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "variousgods:block/altar_floral"
+    },
+    "facing=south": {
+      "model": "variousgods:block/altar_floral"
+    },
+    "facing=east": {
+      "model": "variousgods:block/altar_floral",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "variousgods:block/altar_floral",
+      "y": 90
+    }
+  }
+}
