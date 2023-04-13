@@ -5,7 +5,7 @@ public class Reference
 	public static class ModInfo
 	{
 		public static final String MOD_NAME	= "Various Gods";
-		public static final String MOD_ID	= "variousgods";
+		public static final String MOD_ID	= "vargod";
 		public static final String MOD_PREFIX	= MOD_ID + ":";
 		
 		public static final String VERSION	= "1.0";

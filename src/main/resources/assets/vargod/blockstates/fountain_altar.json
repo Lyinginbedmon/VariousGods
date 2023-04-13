@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "vargod:block/altar_fountain_water"
+    },
+    "waterlogged=true": {
+      "model": "vargod:block/altar_fountain"
+    }
+  }
+}

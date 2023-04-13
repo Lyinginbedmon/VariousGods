@@ -1,6 +1,6 @@
-// 1.19	2023-03-29T01:40:44.9741108	Various Gods entity tags
-c9b2c6857ae58403a516390102fd1e9ad6c48b2f data/variousgods/tags/entity_types/animal.json
-35a9119910c3f0635b2d91c73210dbe6843b2b1b data/variousgods/tags/entity_types/boss.json
-df5786ea76a0916c137290a232a4791eaad2b0dd data/variousgods/tags/entity_types/fish.json
-8b108d32b05105673eda74807733bd85c87fbe97 data/variousgods/tags/entity_types/people.json
-ddbc6d07a891f587ae07ccb8631eb77b890fbca1 data/variousgods/tags/entity_types/sea_creature.json
+// 1.19	2023-04-13T01:43:02.3772067	Various Gods entity tags
+22e29075c50bc58fd1250309ca1ec6852f5b8ee4 data/vargod/tags/entity_types/animal.json
+35a9119910c3f0635b2d91c73210dbe6843b2b1b data/vargod/tags/entity_types/boss.json
+df5786ea76a0916c137290a232a4791eaad2b0dd data/vargod/tags/entity_types/fish.json
+8b108d32b05105673eda74807733bd85c87fbe97 data/vargod/tags/entity_types/people.json
+75ae0d9d94d6be147d463351398a1d272c1aafa6 data/vargod/tags/entity_types/sea_creature.json

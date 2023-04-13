@@ -1,0 +1,19 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.erinus_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.erinus_name\"}",
+  "Domains": [
+    "#vargod:animal",
+    "#vargod:plant"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:moss_block\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:bright",
+      "vargod:druid",
+      "vargod:zoolater",
+      "vargod:vegetarian"
+    ]
+  },
+  "Seed": 66091
+}

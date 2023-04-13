@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "tag": "forge:ingots/gold"
+    },
+    "S": {
+      "tag": "forge:sand"
+    }
+  },
+  "pattern": [
+    "IGI",
+    " I ",
+    "ISI"
+  ],
+  "result": {
+    "item": "vargod:hourglass_altar"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "C": {
+      "tag": "forge:cobblestone"
+    },
+    "S": {
+      "item": "minecraft:smooth_stone_slab"
+    }
+  },
+  "pattern": [
+    " S ",
+    "CCC"
+  ],
+  "result": {
+    "item": "vargod:stone_altar"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.philopos_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.philopos_name\"}",
+  "Domains": [
+    "#vargod:light",
+    "#vargod:knowledge"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:ender_eye\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:wanderer",
+      "vargod:scholar"
+    ]
+  },
+  "Seed": 85134
+}

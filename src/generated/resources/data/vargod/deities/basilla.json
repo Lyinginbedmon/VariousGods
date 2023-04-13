@@ -1,0 +1,19 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.basilla_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.basilla_name\"}",
+  "Domains": [
+    "#vargod:protection",
+    "#vargod:creation",
+    "#vargod:earth"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:cracked_stone_bricks\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:homebody",
+      "vargod:agriphobic",
+      "vargod:inventor"
+    ]
+  },
+  "Seed": 5391
+}

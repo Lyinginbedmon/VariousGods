@@ -1,13 +1,13 @@
-// 1.19	2023-03-29T01:40:44.9771001	Various Gods deities
-fb37fe04f56e08ed98d257136263e6a06d09acca data/variousgods/deities/acinum.json
-f9e07d5724d6235fa5d6ed5e469774abf4306950 data/variousgods/deities/aeneas.json
-e474019ff61f56cce3b9e7e97e08159a993666cb data/variousgods/deities/basilla.json
-33e2bbb98400aad71b1fe15757edcc7349df7fa5 data/variousgods/deities/erinus.json
-215aa60fe8a9a1f436d85961918364ab5bf1a3be data/variousgods/deities/etronicus.json
-0138c9bc1cd0ed3bcce5fe3904fae932e707241d data/variousgods/deities/flying.json
-b8242f08811c59f57b0d176eebfde9708dd9f883 data/variousgods/deities/lying.json
-9611c2424824db64854dfd081d9f59f9f3b520be data/variousgods/deities/moriboca.json
-e0bfcdf9d9777a90e439a9805ffd399ded611604 data/variousgods/deities/philopos.json
-6f537ef28fe6f838d42036e7554ad021feaca1b3 data/variousgods/deities/phoenix.json
-73e493a13a7dd6019ae6145e13dde1f3109baba5 data/variousgods/deities/placitos.json
-3213b0ea55ac068e9f580212c0a07355b6914c2e data/variousgods/deities/urlin.json
+// 1.19	2023-04-13T01:43:02.379815	Various Gods deities
+82c5140b7b85c1d787bfe91265e9878a8d19272f data/vargod/deities/acinum.json
+d79a279706cc7059fe3ad771c7d5a78cdb007eff data/vargod/deities/aeneas.json
+e925438d646ab7db615efdb9c9c50210128e689e data/vargod/deities/basilla.json
+9ebe03042c09bc32051bdd0af9b1ca9cbf2ed6a6 data/vargod/deities/erinus.json
+06a4e11059b4779e950b51435fbc8626dbb31c14 data/vargod/deities/etronicus.json
+e3dfa66bce7fee52026896ddce1ae97878dc9826 data/vargod/deities/flying.json
+28a7f956b9c23a01faa84550b5b6647487a9dc8e data/vargod/deities/lying.json
+a3fc6d232d0587e9287c0e8e7fff62cd9c328227 data/vargod/deities/moriboca.json
+bfc494658bc1b54c9a1cb67ebf88955310f4b1a8 data/vargod/deities/philopos.json
+0c036b1f67e717912b2cdfe9e5c47d1a70c5e60a data/vargod/deities/phoenix.json
+079a251ca86149a16f0d7e292d4f1ff57865c7de data/vargod/deities/placitos.json
+11227b1da0a2de4465ad129ab807106004a212bd data/vargod/deities/urlin.json

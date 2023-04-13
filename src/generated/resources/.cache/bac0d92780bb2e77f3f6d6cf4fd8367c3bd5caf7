@@ -1,7 +1,7 @@
-// 1.19	2023-03-29T01:40:44.9771001	Various Gods item tags
-a3fb019c80f18d6af2eebdfc1c40b6fcd9b25f8a data/variousgods/tags/items/leather_armour.json
-4d22ce84ec7854a54d8c6be4a759d33763b1d18b data/variousgods/tags/items/meat.json
-3297988ed8bc96dd0ee471890f6c860f379ef87b data/variousgods/tags/items/metal_armour.json
-7ed3116413a687ab0b86d1c195045bc055148639 data/variousgods/tags/items/taboo_food.json
-6eeb576d3ee5c85eae270fc909a1440818b5c785 data/variousgods/tags/items/vegetable.json
-bd5badb2d0521ff98cd3222d0f6dd50bd5c37e10 data/variousgods/tags/items/weapon.json
+// 1.19	2023-04-13T01:43:02.3788248	Various Gods item tags
+a3fb019c80f18d6af2eebdfc1c40b6fcd9b25f8a data/vargod/tags/items/leather_armour.json
+4d22ce84ec7854a54d8c6be4a759d33763b1d18b data/vargod/tags/items/meat.json
+3297988ed8bc96dd0ee471890f6c860f379ef87b data/vargod/tags/items/metal_armour.json
+7ed3116413a687ab0b86d1c195045bc055148639 data/vargod/tags/items/taboo_food.json
+6eeb576d3ee5c85eae270fc909a1440818b5c785 data/vargod/tags/items/vegetable.json
+bd5badb2d0521ff98cd3222d0f6dd50bd5c37e10 data/vargod/tags/items/weapon.json

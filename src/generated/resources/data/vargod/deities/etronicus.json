@@ -1,0 +1,17 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.etronicus_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.etronicus_name\"}",
+  "Domains": [
+    "#vargod:death",
+    "#vargod:darkness"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:skeleton_skull\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:shadow",
+      "vargod:pessimist"
+    ]
+  },
+  "Seed": 34031
+}

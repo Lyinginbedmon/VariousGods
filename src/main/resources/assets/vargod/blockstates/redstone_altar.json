@@ -1,0 +1,32 @@
+{
+  "variants": {
+    "facing=north,praying=false": {
+      "model": "vargod:block/altar_redstone"
+    },
+    "facing=south,praying=false": {
+      "model": "vargod:block/altar_redstone"
+    },
+    "facing=east,praying=false": {
+      "model": "vargod:block/altar_redstone",
+      "y": 90
+    },
+    "facing=west,praying=false": {
+      "model": "vargod:block/altar_redstone",
+      "y": 90
+    },
+    "facing=north,praying=true": {
+      "model": "vargod:block/altar_redstone_lit"
+    },
+    "facing=south,praying=true": {
+      "model": "vargod:block/altar_redstone_lit"
+    },
+    "facing=east,praying=true": {
+      "model": "vargod:block/altar_redstone_lit",
+      "y": 90
+    },
+    "facing=west,praying=true": {
+      "model": "vargod:block/altar_redstone_lit",
+      "y": 90
+    }
+  }
+}

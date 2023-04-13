@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "vargod:block/altar_golden"
+    },
+    "facing=south": {
+      "model": "vargod:block/altar_golden"
+    },
+    "facing=east": {
+      "model": "vargod:block/altar_golden",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "vargod:block/altar_golden",
+      "y": 90
+    }
+  }
+}

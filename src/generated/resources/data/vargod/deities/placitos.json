@@ -1,0 +1,17 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.placitos_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.placitos_name\"}",
+  "Domains": [
+    "#vargod:magic",
+    "#vargod:knowledge"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:enchanted_book\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:scholar",
+      "vargod:homebody"
+    ]
+  },
+  "Seed": 66732
+}

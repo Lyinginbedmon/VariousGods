@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "vargod:block/altar_wooden"
+    },
+    "facing=south": {
+      "model": "vargod:block/altar_wooden"
+    },
+    "facing=east": {
+      "model": "vargod:block/altar_wooden",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "vargod:block/altar_wooden",
+      "y": 90
+    }
+  }
+}

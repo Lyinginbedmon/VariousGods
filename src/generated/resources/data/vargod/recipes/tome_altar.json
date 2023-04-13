@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "B": {
+      "item": "minecraft:book"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": [
+    "B",
+    "S"
+  ],
+  "result": {
+    "item": "vargod:tome_altar"
+  }
+}

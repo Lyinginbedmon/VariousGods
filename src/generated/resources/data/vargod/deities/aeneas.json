@@ -1,0 +1,18 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.aeneas_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.aeneas_name\"}",
+  "Domains": [
+    "#vargod:travel",
+    "#vargod:creation",
+    "#vargod:water"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:oak_boat\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:wanderer",
+      "vargod:inventor"
+    ]
+  },
+  "Seed": 5388
+}

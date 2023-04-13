@@ -1,0 +1,16 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.lying_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.lying_name\"}",
+  "Domains": [
+    "#vargod:knowledge",
+    "#vargod:trickery"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:writable_book\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:scholar"
+    ]
+  },
+  "Seed": 2847
+}

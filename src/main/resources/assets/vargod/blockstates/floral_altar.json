@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "vargod:block/altar_floral"
+    },
+    "facing=south": {
+      "model": "vargod:block/altar_floral"
+    },
+    "facing=east": {
+      "model": "vargod:block/altar_floral",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "vargod:block/altar_floral",
+      "y": 90
+    }
+  }
+}

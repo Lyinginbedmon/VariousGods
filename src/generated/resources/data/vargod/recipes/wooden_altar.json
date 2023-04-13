@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": [
+    "L",
+    "S"
+  ],
+  "result": {
+    "item": "vargod:wooden_altar"
+  }
+}

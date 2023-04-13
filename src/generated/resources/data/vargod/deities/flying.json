@@ -1,0 +1,18 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.flying_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.flying_name\"}",
+  "Domains": [
+    "#vargod:law"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:bell\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:pacifist",
+      "vargod:bright",
+      "vargod:claustrophobic",
+      "vargod:zoolater"
+    ]
+  },
+  "Seed": 17218
+}

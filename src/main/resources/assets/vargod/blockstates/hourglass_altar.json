@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "vargod:block/altar_hourglass"
+    },
+    "facing=south": {
+      "model": "vargod:block/altar_hourglass"
+    },
+    "facing=east": {
+      "model": "vargod:block/altar_hourglass",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "vargod:block/altar_hourglass",
+      "y": 90
+    }
+  }
+}

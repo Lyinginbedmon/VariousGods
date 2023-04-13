@@ -1,7 +1,7 @@
 {
   "values": [
-    "variousgods:crystal_altar",
-    "variousgods:golden_altar",
-    "variousgods:hourglass_altar"
+    "vargod:crystal_altar",
+    "vargod:golden_altar",
+    "vargod:hourglass_altar"
   ]
 }

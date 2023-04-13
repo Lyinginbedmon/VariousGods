@@ -310,6 +310,7 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		public Bone(Properties p_49795_)
 		{
 			super(p_49795_.sound(SoundType.BONE_BLOCK));
+			this.registerDefaultState(defaultBlockState().setValue(LIT, false));
 		}
 		
 		public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand)
@@ -461,7 +462,11 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		};
 		protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 4.5D, 14.0D);
 		
-		public Blaze(Properties p_49795_) { super(p_49795_, LIGHT_EMISSION); }
+		public Blaze(Properties p_49795_)
+		{
+			super(p_49795_, LIGHT_EMISSION);
+			this.registerDefaultState(defaultBlockState().setValue(LIT, false));
+		}
 		
 		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPE; }
 		
@@ -557,7 +562,10 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		
 		public Blood(Properties p_49795_) { super(p_49795_); }
 		
-		public void onPrayerComplete(Player player) { player.hurt(DamageSource.STARVE, 1F); }
+		public void onPrayerComplete(Player player)
+		{
+			player.hurt(DamageSource.STARVE, 1F);
+		}
 		
 		public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new BloodAltarEntity(pos, state); }
 		

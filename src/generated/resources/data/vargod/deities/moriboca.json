@@ -1,0 +1,20 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.moriboca_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.moriboca_name\"}",
+  "Domains": [
+    "#vargod:fire",
+    "#vargod:strength",
+    "#vargod:war"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:magma_block\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:brute",
+      "vargod:blacksmith",
+      "vargod:pyromaniac",
+      "vargod:steelskin"
+    ]
+  },
+  "Seed": 77384
+}

@@ -1,0 +1,125 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"0": "block/mushroom_stem",
+		"1": "block/mushroom_block_inside",
+		"2": "block/red_mushroom_block",
+		"3": "block/brown_mushroom_block",
+		"particle": "block/mushroom_stem"
+	},
+	"elements": [
+		{
+			"name": "stem",
+			"from": [6, 0, 7],
+			"to": [8, 4, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 4], "texture": "#0"},
+				"east": {"uv": [0, 0, 2, 4], "texture": "#0"},
+				"south": {"uv": [0, 0, 2, 4], "texture": "#0"},
+				"west": {"uv": [0, 0, 2, 4], "texture": "#0"},
+				"down": {"uv": [0, 0, 2, 2], "texture": "#1"}
+			}
+		},
+		{
+			"name": "cap_base",
+			"from": [5, 4, 6],
+			"to": [9, 5, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 4, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+				"down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+			}
+		},
+		{
+			"name": "cap",
+			"from": [2, 5, 3],
+			"to": [12, 9, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 5, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 4], "texture": "#2"},
+				"east": {"uv": [0, 4, 16, 8], "texture": "#2"},
+				"south": {"uv": [0, 12, 16, 16], "texture": "#2"},
+				"west": {"uv": [0, 8, 16, 12], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#2"},
+				"down": {"uv": [0, 0, 10, 10], "texture": "#1"}
+			}
+		},
+		{
+			"name": "stem",
+			"from": [11, 0, 5],
+			"to": [12, 2, 6],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [11.5, 0, 5.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 2], "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 2], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 2], "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 2], "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#1"}
+			}
+		},
+		{
+			"name": "cap",
+			"from": [10, 2, 4],
+			"to": [13, 4, 7],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [11.5, 0, 5.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 3, 2], "texture": "#3"},
+				"east": {"uv": [0, 0, 3, 2], "texture": "#3"},
+				"south": {"uv": [0, 0, 3, 2], "texture": "#3"},
+				"west": {"uv": [0, 0, 3, 2], "texture": "#3"},
+				"up": {"uv": [0, 0, 3, 3], "texture": "#3"},
+				"down": {"uv": [0, 0, 3, 3], "texture": "#1"}
+			}
+		},
+		{
+			"name": "stem",
+			"from": [2, 0, 6],
+			"to": [3, 1, 7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11.5, 0, 5.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#1"}
+			}
+		},
+		{
+			"name": "cap",
+			"from": [1, 1, 5],
+			"to": [4, 3, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11.5, 0, 5.5]},
+			"faces": {
+				"north": {"uv": [4, 2, 7, 4], "texture": "#2"},
+				"east": {"uv": [13, 6, 16, 8], "texture": "#2"},
+				"south": {"uv": [1, 2, 4, 4], "texture": "#2"},
+				"west": {"uv": [6, 11, 9, 13], "texture": "#2"},
+				"up": {"uv": [10, 5, 13, 8], "texture": "#2"},
+				"down": {"uv": [0, 0, 3, 3], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "mush_1",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2]
+		},
+		{
+			"name": "mush_2",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [3, 4]
+		},
+		{
+			"name": "mush_3",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [5, 6]
+		}
+	]
+}

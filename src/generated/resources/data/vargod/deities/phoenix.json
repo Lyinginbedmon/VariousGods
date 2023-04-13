@@ -1,0 +1,18 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.phoenix_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.phoenix_name\"}",
+  "Domains": [
+    "#vargod:air",
+    "#vargod:travel"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:feather\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:archery",
+      "vargod:wanderer",
+      "vargod:cloudwatcher"
+    ]
+  },
+  "Seed": 19214
+}

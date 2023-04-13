@@ -1,0 +1,17 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.urlin_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.urlin_name\"}",
+  "Domains": [
+    "#vargod:animal",
+    "#vargod:chaos"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:red_mushroom\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:zoolater",
+      "vargod:mycologist"
+    ]
+  },
+  "Seed": 2847
+}

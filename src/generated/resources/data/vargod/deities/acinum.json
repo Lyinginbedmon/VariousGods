@@ -1,0 +1,17 @@
+{
+  "Description": "{\"italic\":true,\"translate\":\"deity.vargod.acinum_desc\"}",
+  "DisplayName": "{\"translate\":\"deity.vargod.acinum_name\"}",
+  "Domains": [
+    "#vargod:water"
+  ],
+  "Functions": {},
+  "Item": "{Count:1b,id:\"minecraft:heart_of_the_sea\"}",
+  "Personality": {
+    "Traits": [
+      "vargod:zoolater",
+      "vargod:seafarer",
+      "vargod:pescetarian"
+    ]
+  },
+  "Seed": 46654
+}
