@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "L": {
+      "item": "minecraft:lever"
+    },
+    "S": {
+      "item": "minecraft:smooth_stone_slab"
+    },
+    "T": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "pattern": [
+    "TLT",
+    "SSS"
+  ],
+  "result": {
+    "item": "vargod:redstone_altar"
+  }
+}

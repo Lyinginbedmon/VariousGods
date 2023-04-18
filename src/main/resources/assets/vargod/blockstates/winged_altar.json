@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "vargod:block/altar_winged"
+    },
+    "facing=east": {
+      "model": "vargod:block/altar_winged",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "vargod:block/altar_winged",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "vargod:block/altar_winged",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "P": {
+      "item": "minecraft:purpur_slab"
+    },
+    "R": {
+      "item": "minecraft:end_rod"
+    },
+    "S": {
+      "item": "minecraft:end_stone"
+    }
+  },
+  "pattern": [
+    "R R",
+    " P ",
+    "SSS"
+  ],
+  "result": {
+    "item": "vargod:ender_altar"
+  }
+}

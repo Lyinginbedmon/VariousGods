@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "F": {
+      "tag": "minecraft:flowers"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": [
+    "FFF",
+    "SSS"
+  ],
+  "result": {
+    "item": "vargod:floral_altar"
+  }
+}

@@ -8,7 +8,8 @@ import javax.annotation.Nullable;
 import org.apache.commons.compress.utils.Lists;
 
 import com.lying.variousgods.VariousGods;
-import com.lying.variousgods.deities.miracle.MiracleBountiful.*;
+import com.lying.variousgods.deities.miracle.MiracleBountiful.MiracleBountifulHarvest;
+import com.lying.variousgods.deities.miracle.MiracleBountiful.MiracleBountifulMine;
 import com.lying.variousgods.init.VGRegistries;
 
 import net.minecraft.resources.ResourceLocation;
@@ -31,9 +32,13 @@ public class Miracles
 	public static final RegistryObject<Miracle> BOUNTIFUL_HARVEST = register("bountiful_harvest", () -> new MiracleBountifulHarvest());
 	public static final RegistryObject<Miracle> BOUNTIFUL_MINE = register("bountiful_mine", () -> new MiracleBountifulMine());
 	// Fertile Soil - Bonemealing crops affects all similar crops within a 5x5x5 area
+	public static final RegistryObject<Miracle> FERTILE_SOIL = register("fertile_soil", () -> new MiracleFertileSoil());
 	// Full Stomach - Eating the last food item in a stack fills your entire hunger bar
+	public static final RegistryObject<Miracle> FULL_STOMACH = register("full_stomach", () -> new MiracleFullStomach());
 	// Holy Sacrament - Eating/drinking a food item heals you
+	public static final RegistryObject<Miracle> HOLY_SACRAMENT = register("holy_sacrament", () -> new MiracleHolySacrament());
 	// Curative Rest - Sleeping heals you
+	public static final RegistryObject<Miracle> CURATIVE_REST = register("curative_rest", () -> new MiracleCurativeRest());
 	// Holy Blessing - Praying heals you
 	public static final RegistryObject<Miracle> STRONG_BREW = register("strong_brew", () -> new MiracleStrongBrew());
 	// By God's Light - Damages hostile undead in an area around you

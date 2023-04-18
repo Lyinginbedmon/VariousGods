@@ -8,6 +8,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -80,6 +81,81 @@ public class VGRecipeProvider extends RecipeProvider
 			.define('S', ItemTags.WOODEN_SLABS)
 			.group(ALTAR_GROUP)
 			.unlockedBy("has_book", has(Items.BOOK)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.WINGED_ALTAR_ITEM.get())
+			.pattern("CBC")
+			.pattern(" S ")
+			.define('B', Items.QUARTZ_BLOCK)
+			.define('C', Items.QUARTZ)
+			.define('S', Items.QUARTZ_SLAB)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_quartz", has(Items.QUARTZ)).save(consumer);
+		
+		ShapelessRecipeBuilder.shapeless(VGItems.BLOOD_ALTAR_ITEM.get())
+			.requires(Items.DEEPSLATE)
+			.requires(Items.IRON_SWORD)
+			.requires(Items.GLASS_BOTTLE)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_deepslate", has(Items.DEEPSLATE)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.BLAZE_ALTAR_ITEM.get())
+			.pattern("F")
+			.pattern("B")
+			.define('F', Items.FIRE_CHARGE)
+			.define('B', Items.NETHER_BRICK_SLAB)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_nether_brick", has(Items.NETHER_BRICK)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.REDSTONE_ALTAR_ITEM.get())
+			.pattern("TLT")
+			.pattern("SSS")
+			.define('T', Items.REDSTONE_TORCH)
+			.define('L', Items.LEVER)
+			.define('S', Items.SMOOTH_STONE_SLAB)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_redstone_dust", has(Tags.Items.DUSTS_REDSTONE)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.ENDER_ALTAR_ITEM.get())
+			.pattern("R R")
+			.pattern(" P ")
+			.pattern("SSS")
+			.define('R', Items.END_ROD)
+			.define('P', Items.PURPUR_SLAB)
+			.define('S', Items.END_STONE)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_purpur", has(Tags.Items.END_STONES)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.MUSHROOM_ALTAR_ITEM.get())
+			.pattern("RCB")
+			.define('R', Items.RED_MUSHROOM)
+			.define('C', Items.RED_MUSHROOM_BLOCK)
+			.define('B', Items.BROWN_MUSHROOM)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_mushroom", has(Tags.Items.MUSHROOMS)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.OVERGROWN_ALTAR_ITEM.get())
+			.pattern("M")
+			.pattern("S")
+			.define('M', Tags.Items.COBBLESTONE_MOSSY)
+			.define('S', Items.COBBLESTONE_SLAB)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_mossy", has(Tags.Items.COBBLESTONE_MOSSY)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.FOUNTAIN_ALTAR_ITEM.get())
+			.pattern("PBP")
+			.pattern("PPP")
+			.define('P', Items.PRISMARINE_SHARD)
+			.define('B', Items.WATER_BUCKET)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_prismarine", has(Items.PRISMARINE_SHARD)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.FLORAL_ALTAR_ITEM.get())
+			.pattern("FFF")
+			.pattern("SSS")
+			.define('F', ItemTags.FLOWERS)
+			.define('S', ItemTags.WOODEN_SLABS)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_flowers", has(ItemTags.FLOWERS)).save(consumer);
 	}
 	
 	public String getName()

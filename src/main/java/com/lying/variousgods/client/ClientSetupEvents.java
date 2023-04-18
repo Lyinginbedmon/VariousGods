@@ -48,6 +48,7 @@ public class ClientSetupEvents
     		ItemBlockRenderTypes.setRenderLayer(VGBlocks.CRYSTAL_ALTAR.get(), RenderType.cutout());
     		ItemBlockRenderTypes.setRenderLayer(VGBlocks.BLAZE_ALTAR.get(), RenderType.cutout());
     		ItemBlockRenderTypes.setRenderLayer(VGBlocks.REDSTONE_ALTAR.get(), RenderType.cutout());
+    		ItemBlockRenderTypes.setRenderLayer(VGBlocks.WINGED_ALTAR.get(), RenderType.cutout());
     		
 			MenuScreens.register(VGMenus.ALTAR_MENU.get(), ScreenAltarStart::new);
 			MenuScreens.register(VGMenus.DEITY_MENU.get(), ScreenAltarDeity::new);

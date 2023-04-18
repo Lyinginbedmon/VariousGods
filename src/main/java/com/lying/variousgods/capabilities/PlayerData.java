@@ -296,7 +296,7 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 			{
 				BlockState state = thePlayer.getLevel().getBlockState(getAltarPos());
 				if(state.getBlock() instanceof BlockAltar)
-					((BlockAltar)state.getBlock()).onPrayerComplete(thePlayer);
+					((BlockAltar)state.getBlock()).onPrayerComplete(thePlayer, getAltarPos());
 				
 				setCurrentAltar(false);
 				this.prayingCooldown = Reference.Values.TICKS_PER_MINUTE * 5;
@@ -376,7 +376,7 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 		markDirty();
 	}
 	
-	public boolean canPray() { return this.prayingCooldown == 0; }
+	public boolean canPray() { return this.prayingCooldown == 0 || true; }
 	public boolean isPraying() { return this.prayingTicks > 0; }
 	
 	public void startPraying()

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "B": {
+      "item": "minecraft:water_bucket"
+    },
+    "P": {
+      "item": "minecraft:prismarine_shard"
+    }
+  },
+  "pattern": [
+    "PBP",
+    "PPP"
+  ],
+  "result": {
+    "item": "vargod:fountain_altar"
+  }
+}

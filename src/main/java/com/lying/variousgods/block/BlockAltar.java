@@ -129,7 +129,7 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		return new MenuAltarStart(containerId, player.pick(range, 0F, false));
 	}
 	
-	public void onPrayerComplete(Player thePlayer) { }
+	public void onPrayerComplete(Player thePlayer, BlockPos pos) { }
 	
 	@SuppressWarnings("unchecked")
 	@Nullable
@@ -434,9 +434,20 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPE; }
 	}
 	
-	public static class Winged extends BlockAltar	// FIXME Wind chime?
+	public static class Winged extends BlockAltar
 	{
+		protected static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 14, 13);
+		
 		public Winged(Properties p_49795_) { super(p_49795_); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return SHAPE; }
+		
+		public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand)
+		{
+			super.animateTick(state, world, pos, rand);
+			if(state.getValue(PRAYING) && rand.nextInt(30) == 0)
+				world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ALLAY_AMBIENT_WITHOUT_ITEM, SoundSource.BLOCKS, 1F, 1F, false);
+		}
 	}
 	
 	public static class Mushroom extends BlockAltar
@@ -562,7 +573,7 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		
 		public Blood(Properties p_49795_) { super(p_49795_); }
 		
-		public void onPrayerComplete(Player player)
+		public void onPrayerComplete(Player player, BlockPos pos)
 		{
 			player.hurt(DamageSource.STARVE, 1F);
 		}

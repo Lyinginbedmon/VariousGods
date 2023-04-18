@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "B": {
+      "item": "minecraft:nether_brick_slab"
+    },
+    "F": {
+      "item": "minecraft:fire_charge"
+    }
+  },
+  "pattern": [
+    "F",
+    "B"
+  ],
+  "result": {
+    "item": "vargod:blaze_altar"
+  }
+}

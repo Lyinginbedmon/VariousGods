@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "altars",
+  "key": {
+    "B": {
+      "item": "minecraft:quartz_block"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    },
+    "S": {
+      "item": "minecraft:quartz_slab"
+    }
+  },
+  "pattern": [
+    "CBC",
+    " S "
+  ],
+  "result": {
+    "item": "vargod:winged_altar"
+  }
+}
