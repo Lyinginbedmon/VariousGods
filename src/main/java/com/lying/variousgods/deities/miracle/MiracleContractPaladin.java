@@ -10,10 +10,13 @@ import com.lying.variousgods.data.VGItemTags;
 import com.lying.variousgods.deities.miracle.BindingContract.IInventoryContract;
 import com.lying.variousgods.init.VGEnchantments;
 
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class MiracleContractPaladin extends Miracle
@@ -22,11 +25,17 @@ public class MiracleContractPaladin extends Miracle
 	{
 		super(Power.MINOR);
 	}
-
-	@Override
-	public float getUtility(Player playerIn, Level worldIn) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public float getUtility(Player playerIn, Level worldIn)
+	{
+		ItemStack heldItem = playerIn.getItemBySlot(EquipmentSlot.MAINHAND);
+		if(heldItem.is(VGItemTags.WEAPON) && heldItem.isDamageableItem())
+			if(heldItem.getItem() instanceof TieredItem)
+				return 1F - ((float)TierSortingRegistry.getTiersLowerThan(((TieredItem)heldItem.getItem()).getTier()).size() / (float)TierSortingRegistry.getSortedTiers().size());
+			else
+				return 0.8F;
+		
+		return 0F;
 	}
 	
 	public void addListeners(IEventBus bus)

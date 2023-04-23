@@ -11,11 +11,7 @@ public class MiracleFullStomach extends Miracle
 {
 	public MiracleFullStomach() { super(Power.MINOR); }
 	
-	public float getUtility(Player playerIn, Level worldIn)
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public float getUtility(Player playerIn, Level worldIn) { return 1F - ((float)playerIn.getFoodData().getFoodLevel() / 20F); }
 	
 	public void addListeners(IEventBus bus)
 	{

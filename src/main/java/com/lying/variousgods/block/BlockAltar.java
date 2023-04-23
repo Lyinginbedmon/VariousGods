@@ -82,16 +82,9 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, Boolean.valueOf(state.getType() == Fluids.WATER));
 	}
 	
-	public static void setAltarInUse(BlockPos pos, Level world, boolean active)
-	{
-		BlockState state = world.getBlockState(pos);
-		if(!world.isClientSide() && state.hasProperty(PRAYING) && state.getValue(PRAYING) != active)
-			world.setBlockAndUpdate(pos, state.setValue(PRAYING, Boolean.valueOf(active)));
-	}
-	
 	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
 	{
-		if(!world.isClientSide() && canPrayAt(state, world, player) && !state.getValue(PRAYING))
+		if(!world.isClientSide() && canPrayAt(state, world, player))
 		{
 			PlayerData.getCapability(player).setAltarPos(pos);
 			player.openMenu(this);
@@ -587,6 +580,28 @@ public abstract class BlockAltar extends HorizontalDirectionalBlock implements S
 			public Liquid(Properties p_49795_) { super(p_49795_); }
 			
 			protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_48725_) { p_48725_.add(FACING); }
+		}
+	}
+	
+	public static class Plushy extends BlockAltar
+	{
+		public static final VoxelShape SHAPE_Z = Block.box(5, 0, 0, 11, 4, 16);
+		public static final VoxelShape SHAPE_X = Block.box(0, 0, 5, 16, 4, 11);
+		
+		public Plushy(Properties p_49795_) { super(p_49795_.sound(SoundType.WOOL)); }
+		
+		public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) { return state.getValue(FACING).getAxis() == Axis.X ? SHAPE_X : SHAPE_Z; }
+		
+		public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource rand)
+		{
+			super.animateTick(state, world, pos, rand);
+			if(state.getValue(PRAYING) && rand.nextInt(10) == 0)
+			{
+				double x = rand.nextGaussian() * 0.02D;
+				double y = rand.nextGaussian() * 0.02D;
+				double z = rand.nextGaussian() * 0.02D;
+				world.addParticle(ParticleTypes.HEART, pos.getX() + rand.nextDouble(), pos.getY() + rand.nextDouble(), pos.getZ() + rand.nextDouble(), x, y, z);
+			}
 		}
 	}
 }

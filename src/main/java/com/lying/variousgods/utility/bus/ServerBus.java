@@ -9,6 +9,7 @@ import com.lying.variousgods.deities.miracle.BindingContract;
 import com.lying.variousgods.deities.miracle.BindingContract.IInventoryContract;
 import com.lying.variousgods.init.VGEnchantments;
 import com.lying.variousgods.reference.Reference;
+import com.lying.variousgods.utility.savedata.AltarWatcher;
 import com.lying.variousgods.utility.savedata.BrewingStandWatcher;
 
 import net.minecraft.core.BlockPos;
@@ -20,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.TickEvent.LevelTickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
@@ -60,6 +62,14 @@ public class ServerBus
 			dataNew.deserializeNBT(dataOld.serializeNBT());
 		
 		playerOld.invalidateCaps();
+	}
+	
+	@SubscribeEvent
+	public static void onLevelTick(LevelTickEvent event)
+	{
+		Level world = event.level;
+		AltarWatcher watcher = AltarWatcher.instance(world);
+		watcher.tick();
 	}
 	
 	@SubscribeEvent

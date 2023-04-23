@@ -19,6 +19,8 @@ public class MiracleFertileSoil extends Miracle
 	public float getUtility(Player playerIn, Level worldIn)
 	{
 		// TODO Auto-generated method stub
+		
+		
 		return 0;
 	}
 	

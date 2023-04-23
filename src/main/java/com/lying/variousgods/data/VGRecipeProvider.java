@@ -156,6 +156,15 @@ public class VGRecipeProvider extends RecipeProvider
 			.define('S', ItemTags.WOODEN_SLABS)
 			.group(ALTAR_GROUP)
 			.unlockedBy("has_flowers", has(ItemTags.FLOWERS)).save(consumer);
+		
+		ShapedRecipeBuilder.shaped(VGItems.PLUSHY_ALTAR_ITEM.get())
+			.pattern("BBB")
+			.pattern("PW ")
+			.define('B', Items.LIGHT_BLUE_WOOL)
+			.define('W', Items.WHITE_WOOL)
+			.define('P', Items.PINK_DYE)
+			.group(ALTAR_GROUP)
+			.unlockedBy("has_wool", has(ItemTags.WOOL)).save(consumer);
 	}
 	
 	public String getName()

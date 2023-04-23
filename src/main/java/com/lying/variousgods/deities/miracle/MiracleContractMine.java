@@ -8,10 +8,13 @@ import com.lying.variousgods.init.VGEnchantments;
 import com.lying.variousgods.utility.ExUtils;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class MiracleContractMine extends Miracle
@@ -20,11 +23,14 @@ public class MiracleContractMine extends Miracle
 	{
 		super(Power.MINOR);
 	}
-
-	@Override
-	public float getUtility(Player playerIn, Level worldIn) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public float getUtility(Player playerIn, Level worldIn)
+	{
+		ItemStack heldItem = playerIn.getItemBySlot(EquipmentSlot.MAINHAND);
+		if(heldItem.getItem() instanceof PickaxeItem && heldItem.isDamageableItem())
+			return 1F - ((float)TierSortingRegistry.getTiersLowerThan(((TieredItem)heldItem.getItem()).getTier()).size() / (float)TierSortingRegistry.getSortedTiers().size());
+		
+		return 0F;
 	}
 	
 	public void addListeners(IEventBus bus)

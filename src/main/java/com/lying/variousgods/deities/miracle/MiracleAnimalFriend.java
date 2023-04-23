@@ -13,11 +13,7 @@ public class MiracleAnimalFriend extends Miracle
 		super(Power.MINOR);
 	}
 	
-	public float getUtility(Player playerIn, Level worldIn)
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public float getUtility(Player playerIn, Level worldIn) { return 0.5F; }
 	
 	public void addListeners(IEventBus bus)
 	{

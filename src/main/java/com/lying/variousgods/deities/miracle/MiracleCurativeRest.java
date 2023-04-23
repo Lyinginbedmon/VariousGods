@@ -9,11 +9,7 @@ public class MiracleCurativeRest extends Miracle
 {
 	public MiracleCurativeRest() { super(Power.MINOR); }
 	
-	public float getUtility(Player playerIn, Level worldIn)
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public float getUtility(Player playerIn, Level worldIn) { return 1F - (playerIn.getHealth() / playerIn.getMaxHealth()); }
 	
 	public void addListeners(IEventBus bus)
 	{

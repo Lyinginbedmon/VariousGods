@@ -24,6 +24,7 @@ import com.lying.variousgods.init.VGCapabilities;
 import com.lying.variousgods.network.PacketHandler;
 import com.lying.variousgods.network.PacketSyncPlayerData;
 import com.lying.variousgods.reference.Reference;
+import com.lying.variousgods.utility.savedata.AltarWatcher;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -277,12 +278,6 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 	}
 	public boolean hasAltar() { return this.altarPos.distSqr(BlockPos.ZERO) > 0; }
 	public BlockPos getAltarPos() { return this.altarPos; }
-	public void setCurrentAltar(boolean active)
-	{
-		BlockState state = thePlayer.getLevel().getBlockState(getAltarPos());
-		if(state.hasProperty(BlockAltar.PRAYING) && state.getValue(BlockAltar.PRAYING) != active)
-			thePlayer.getLevel().setBlockAndUpdate(getAltarPos(), state.setValue(BlockAltar.PRAYING, Boolean.valueOf(active)));
-	}
 	
 	public void tick()
 	{
@@ -298,7 +293,6 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 				if(state.getBlock() instanceof BlockAltar)
 					((BlockAltar)state.getBlock()).onPrayerComplete(thePlayer, getAltarPos());
 				
-				setCurrentAltar(false);
 				this.prayingCooldown = Reference.Values.TICKS_PER_MINUTE * 5;
 				if(!MinecraftForge.EVENT_BUS.post(new PlayerPrayerEvent(thePlayer, god, thePlayer.blockPosition())))
 				{
@@ -306,8 +300,6 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 					god.onPlayerPray((ServerPlayer)thePlayer);
 				}
 			}
-			else
-				setCurrentAltar(true);
 		}
 		else if(this.prayingCooldown > 0)
 			--this.prayingCooldown;
@@ -384,7 +376,7 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 		if(hasAltar())
 		{
 			this.prayingTicks = Reference.Values.TICKS_PER_SECOND * 5;
-			BlockAltar.setAltarInUse(getAltarPos(), this.thePlayer.getLevel(), true);
+			AltarWatcher.instance(this.thePlayer.getLevel()).addUser(getAltarPos());
 		}
 		markDirty();
 	}
@@ -392,7 +384,7 @@ public class PlayerData implements ICapabilitySerializable<CompoundTag>
 	public void stopPraying()
 	{
 		if(hasAltar())
-			BlockAltar.setAltarInUse(getAltarPos(), this.thePlayer.getLevel(), false);
+			AltarWatcher.instance(this.thePlayer.getLevel()).removeUser(getAltarPos());
 		
 		this.prayingTicks = 0;
 	}

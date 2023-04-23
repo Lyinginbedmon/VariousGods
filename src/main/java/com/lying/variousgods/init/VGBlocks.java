@@ -23,8 +23,6 @@ public class VGBlocks
     public static final RegistryObject<Block> WOODEN_ALTAR = BLOCKS.register("wooden_altar", () -> new BlockAltar.Wooden(BlockBehaviour.Properties.of(Material.WOOD).strength(2F, 3F).noOcclusion()));
     public static final RegistryObject<Block> CRYSTAL_ALTAR = BLOCKS.register("crystal_altar", () -> new BlockAltar.Crystal(BlockBehaviour.Properties.of(Material.AMETHYST).noOcclusion()));
     public static final RegistryObject<Block> TOME_ALTAR = BLOCKS.register("tome_altar", () -> new BlockAltar.Tome(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion()));
-    
-    // WIP Altars
     public static final RegistryObject<Block> FLORAL_ALTAR = BLOCKS.register("floral_altar", () -> new BlockAltar.Floral(BlockBehaviour.Properties.of(Material.PLANT).noOcclusion()));
     public static final RegistryObject<Block> REDSTONE_ALTAR = BLOCKS.register("redstone_altar", () -> new BlockAltar.Redstone(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
     public static final RegistryObject<Block> FOUNTAIN_ALTAR = BLOCKS.register("fountain_altar", () -> new BlockAltar.Fountain(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
@@ -35,6 +33,7 @@ public class VGBlocks
     public static final RegistryObject<Block> OVERGROWN_ALTAR = BLOCKS.register("overgrown_altar", () -> new BlockAltar.Overgrown(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
     public static final RegistryObject<Block> BLOOD_ALTAR_LIQUID = BLOCKS.register("blood_altar_liquid", () -> new BlockAltar.Blood.Liquid(BlockBehaviour.Properties.of(Material.STONE)));
     public static final RegistryObject<Block> BLOOD_ALTAR = BLOCKS.register("blood_altar", () -> new BlockAltar.Blood(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+    public static final RegistryObject<Block> PLUSHY_ALTAR = BLOCKS.register("plushy_altar", () -> new BlockAltar.Plushy(BlockBehaviour.Properties.of(Material.WOOL).noOcclusion()));
     
     public static void init() { }
 }

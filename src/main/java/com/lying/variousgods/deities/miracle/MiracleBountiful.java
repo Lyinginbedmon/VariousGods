@@ -4,7 +4,9 @@ import com.lying.variousgods.api.event.FortuneLevelEvent;
 import com.lying.variousgods.data.VGBlockTags;
 
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -44,10 +46,7 @@ public abstract class MiracleBountiful extends Miracle
 		
 		public boolean applysTo(BlockState state) { return state.is(VGBlockTags.CROP_BLOCKS); }
 		
-		public float getUtility(Player playerIn, Level worldIn) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+		public float getUtility(Player playerIn, Level worldIn) { return 0.5F; }
 	}
 	
 	public static class MiracleBountifulMine extends MiracleBountiful
@@ -56,9 +55,10 @@ public abstract class MiracleBountiful extends Miracle
 		
 		public boolean applysTo(BlockState state) { return state.is(VGBlockTags.ORE_BLOCKS); }
 		
-		public float getUtility(Player playerIn, Level worldIn) {
-			// TODO Auto-generated method stub
-			return 0;
+		public float getUtility(Player playerIn, Level worldIn)
+		{
+			ItemStack heldItem = playerIn.getItemBySlot(EquipmentSlot.MAINHAND);
+			return (float)heldItem.getDamageValue() / (float)heldItem.getMaxDamage();
 		}
 	}
 }

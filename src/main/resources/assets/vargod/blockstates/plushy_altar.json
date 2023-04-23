@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "vargod:block/altar_plushy"
+    },
+    "facing=south": {
+      "model": "vargod:block/altar_plushy",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "vargod:block/altar_plushy",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "vargod:block/altar_plushy",
+      "y": 270
+    }
+  }
+}

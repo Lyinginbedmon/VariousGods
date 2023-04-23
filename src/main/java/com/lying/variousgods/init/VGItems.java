@@ -34,6 +34,7 @@ public class VGItems
     public static final RegistryObject<Item> OVERGROWN_ALTAR_ITEM = ITEMS.register("overgrown_altar", () -> new BlockItem(VGBlocks.OVERGROWN_ALTAR.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
     public static final RegistryObject<Item> FOUNTAIN_ALTAR_ITEM = ITEMS.register("fountain_altar", () -> new BlockItem(VGBlocks.FOUNTAIN_ALTAR.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
     public static final RegistryObject<Item> FLORAL_ALTAR_ITEM = ITEMS.register("floral_altar", () -> new BlockItem(VGBlocks.FLORAL_ALTAR.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+    public static final RegistryObject<Item> PLUSHY_ALTAR_ITEM = ITEMS.register("plushy_altar", () -> new BlockItem(VGBlocks.PLUSHY_ALTAR.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
     
 	public static Item register(String nameIn, Item itemIn)
 	{

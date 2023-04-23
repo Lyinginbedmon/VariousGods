@@ -14,11 +14,7 @@ public class MiracleHolySacrament extends Miracle
 {
 	public MiracleHolySacrament() { super(Power.MAJOR); }
 	
-	public float getUtility(Player playerIn, Level worldIn)
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public float getUtility(Player playerIn, Level worldIn) { return 1F - (playerIn.getHealth() / playerIn.getMaxHealth()); }
 	
 	public void addListeners(IEventBus bus)
 	{
@@ -31,7 +27,7 @@ public class MiracleHolySacrament extends Miracle
 		if(consumable.getFoodProperties(player).getNutrition() > Foods.BREAD.getNutrition() || !checkMiracle(player, Miracles.HOLY_SACRAMENT.get()))
 			return;
 		
-		player.heal(20 - consumable.getFoodProperties(player).getNutrition());
+		player.heal(player.getMaxHealth() - consumable.getFoodProperties(player).getNutrition());
 		
 		reportMiracle(player, Miracles.HOLY_SACRAMENT.get());
 	}
